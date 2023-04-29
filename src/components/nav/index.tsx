@@ -4,7 +4,7 @@ import { ReactComponent as DashboardSvg } from "../../assets/svg/dashboard.svg";
 import { ReactComponent as TimeSheetSvg } from "../../assets/svg/timeSheet.svg";
 import { ReactComponent as ActivitySvg } from "../../assets/svg/activity.svg";
 import { ReactComponent as InsightSvg } from "../../assets/svg/insights.svg";
-import { ReactComponent as ProjectManagmentSvg } from "../../assets/svg/pManagement.svg";
+import { ReactComponent as ProjectManagementSvg } from "../../assets/svg/pManagement.svg";
 import { ReactComponent as ReportsSvg } from "../../assets/svg/reports.svg";
 import { ReactComponent as TeamsSvg } from "../../assets/svg/teams.svg";
 import { ReactComponent as ExpensesSvg } from "../../assets/svg/expenses.svg";
@@ -47,7 +47,7 @@ const nav = [
   {
     id: 4,
     text: "Project Management",
-    icon: <ProjectManagmentSvg />,
+    icon: <ProjectManagementSvg />,
     children: [
       { id: 10, url: projectPath, text: "Project", icon: "icon" },
       { id: 11, url: todoPath, text: "Todo", icon: "icon" }
