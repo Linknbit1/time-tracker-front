@@ -1,0 +1,10 @@
+@use "../../app/import.scss" as *;
+
+.main {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  grid-template-rows: 46px 1fr;
+  grid-template-areas:
+    "sidebar header"
+    "sidebar content";
+}

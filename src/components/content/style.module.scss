@@ -1,0 +1,4 @@
+@use "../../app/import.scss" as *;
+.content {
+  grid-area: content / 2 / span 2;
+}

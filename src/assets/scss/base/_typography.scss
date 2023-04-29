@@ -1,0 +1,41 @@
+@for $i from 1 through 9 {
+  %fw-#{$i * 100} {
+    font-weight: ($i * 100);
+  }
+}
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+html,
+body,
+.main {
+  height: 100vh;
+  font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+// text
+%text {
+  &-uppercase {
+    text-transform: uppercase;
+  }
+  &-capitalize {
+    text-transform: capitalize;
+  }
+  &-lowercase {
+    text-transform: lowercase;
+  }
+  &-start {
+    text-align: start;
+  }
+  &-center {
+    text-align: center;
+  }
+  &-end {
+    text-align: end;
+  }
+  &-decoration {
+    text-decoration: none;
+  }
+}
