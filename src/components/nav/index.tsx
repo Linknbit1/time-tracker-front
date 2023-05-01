@@ -1,13 +1,13 @@
 import React from "react";
-import { ReactComponent as DashboardSvg } from "../../assets/svg/dashboard.svg";
 
-import { ReactComponent as TimeSheetSvg } from "../../assets/svg/timeSheet.svg";
 import { ReactComponent as ActivitySvg } from "../../assets/svg/activity.svg";
+import { ReactComponent as DashboardSvg } from "../../assets/svg/dashboard.svg";
+import { ReactComponent as ExpensesSvg } from "../../assets/svg/expenses.svg";
 import { ReactComponent as InsightSvg } from "../../assets/svg/insights.svg";
 import { ReactComponent as ProjectManagementSvg } from "../../assets/svg/pManagement.svg";
 import { ReactComponent as ReportsSvg } from "../../assets/svg/reports.svg";
 import { ReactComponent as TeamsSvg } from "../../assets/svg/teams.svg";
-import { ReactComponent as ExpensesSvg } from "../../assets/svg/expenses.svg";
+import { ReactComponent as TimeSheetSvg } from "../../assets/svg/timeSheet.svg";
 import {
   allReportsPath,
   amountOwedPath,
@@ -26,7 +26,25 @@ import {
   urlPath
 } from "../../routes/paths";
 
-const nav = [
+interface Button {
+  text: string;
+  icon?: JSX.Element;
+}
+
+interface Link extends Button {
+  url: string;
+}
+
+interface Accordion extends Button {
+  id: number;
+  url?: string;
+}
+
+interface Nav extends Accordion {
+  children?: Link[];
+}
+
+const nav: Nav[] = [
   { id: 0, url: dashboardPath, text: "Dashboard", icon: <DashboardSvg /> },
   { id: 1, url: timeSheetsPath, text: "Time Sheets", icon: <TimeSheetSvg /> },
   {
@@ -36,11 +54,10 @@ const nav = [
     children: [
       {
         url: appsPath,
-        text: "Apps",
-        icon: "icon"
+        text: "Apps"
       },
-      { url: screenShotsPath, text: "Screen Shots", icon: "icon" },
-      { url: urlPath, text: "URLs", icon: "icon" }
+      { url: screenShotsPath, text: "Screen Shots" },
+      { url: urlPath, text: "URLs" }
     ]
   },
   { id: 3, url: insightsPath, text: "Insights", icon: <InsightSvg /> },
@@ -49,8 +66,8 @@ const nav = [
     text: "Project Management",
     icon: <ProjectManagementSvg />,
     children: [
-      { id: 10, url: projectPath, text: "Project", icon: "icon" },
-      { id: 11, url: todoPath, text: "Todo", icon: "icon" }
+      { url: projectPath, text: "Project" },
+      { url: todoPath, text: "Todo" }
     ]
   },
   {
@@ -58,11 +75,11 @@ const nav = [
     text: "Reports",
     icon: <ReportsSvg />,
     children: [
-      { id: 10, url: dailyTotalPath, text: "Daily Total", icon: "icon" },
-      { id: 12, url: timeAndActivityPath, text: "Time & Activity", icon: "icon" },
-      { id: 13, url: amountOwedPath, text: "Amount Owned", icon: "icon" },
-      { id: 14, url: paymentsPath, text: "Payments", icon: "icon" },
-      { id: 15, url: allReportsPath, text: "All Reports", icon: "icon" }
+      { url: dailyTotalPath, text: "Daily Total" },
+      { url: timeAndActivityPath, text: "Time & Activity" },
+      { url: amountOwedPath, text: "Amount Owned" },
+      { url: paymentsPath, text: "Payments" },
+      { url: allReportsPath, text: "All Reports" }
     ]
   },
   { id: 6, url: teamsPath, text: "Teams", icon: <TeamsSvg /> },

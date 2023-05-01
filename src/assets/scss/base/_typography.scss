@@ -3,18 +3,7 @@
     font-weight: ($i * 100);
   }
 }
-* {
-  margin: 0px;
-  padding: 0px;
-  box-sizing: border-box;
-}
 
-html,
-body,
-.main {
-  height: 100vh;
-  font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
 // text
 %text {
   &-uppercase {

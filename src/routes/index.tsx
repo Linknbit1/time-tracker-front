@@ -1,25 +1,23 @@
 import React from "react";
-// import Login from "../pages/auth/login";
-// import Home from "../pages/home";
-import Login from "../pages/auth/login";
-// import Dashboard from "../pages/dashboard";
-import * as paths from "../constants/routes";
-import TimeSheet from "../pages/timeSheet";
-import Apps from "../pages/apps";
-import ScreenShots from "../pages/screenShots";
-import Url from "../pages/url";
-import Insights from "../pages/insights";
-import Projects from "../pages/projects";
-import Todo from "../pages/todo";
-import DailyTotal from "../pages/dailyTotal";
-import TimeAndActivity from "../pages/time&Activity";
-import AmountOwned from "../pages/amountOwned";
-import Payments from "../pages/payments";
-import AllReports from "../pages/allReports";
-import Teams from "../pages/teams";
-import Expenses from "../pages/expenses";
-import Dashboard from "../pages/dashboard";
+
 import Layout from "../components/layout";
+import * as paths from "../constants/routes";
+import AllReports from "../pages/allReports";
+import AmountOwned from "../pages/amountOwned";
+import Apps from "../pages/apps";
+import Login from "../pages/auth/login";
+import DailyTotal from "../pages/dailyTotal";
+import Dashboard from "../pages/dashboard";
+import Expenses from "../pages/expenses";
+import Insights from "../pages/insights";
+import Payments from "../pages/payments";
+import Projects from "../pages/projects";
+import ScreenShots from "../pages/screenShots";
+import Teams from "../pages/teams";
+import TimeAndActivity from "../pages/time&Activity";
+import TimeSheet from "../pages/timeSheet";
+import Todo from "../pages/todo";
+import Url from "../pages/url";
 
 interface RouterOptions {
   element: JSX.Element;

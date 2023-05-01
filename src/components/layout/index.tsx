@@ -1,9 +1,11 @@
-import React, { Suspense } from "react";
+import React from "react";
 import { Outlet } from "react-router-dom";
+
+import Content from "../content";
 import Header from "../header";
 import SideBar from "../sidebar";
+
 import styles from "./style.module.scss";
-import Content from "../content";
 
 function Layout() {
   return (

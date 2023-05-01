@@ -1,0 +1,65 @@
+@use "../abstract/properties";
+@use "typography";
+@use "../abstract/variables" as var;
+
+:root {
+  --family: #{$family};
+
+  @each $size in var.$sizes {
+    --fs-#{$size}: #{calc($size / 10) + rem};
+  }
+
+  @each $name,
+  $value in var.$colors {
+    --#{$name}: #{$value};
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
+html {
+  font-size: 62.5%;
+}
+
+html,
+body {
+  height: 100vh;
+}
+
+body {
+  font-family: var(--family);
+  font-size: var(--fs-16);
+  @extend %fw-400;
+}
+
+input,
+select,
+button,
+textarea {
+  font-family: var(--family);
+  outline-color: var(--clr-black);
+
+  &:focus,
+  &:focus-visible {
+    outline: none;
+  }
+}
+
+figure,
+table,
+picture,
+img,
+iframe,
+svg {
+  max-width: 100%;
+}
+
+#root {
+  @extend %d-contents;
+}
