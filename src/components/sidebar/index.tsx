@@ -13,6 +13,7 @@ interface HeaderProps {
 
 const SideBar = ({ className }: HeaderProps) => {
   const [currentPage, setCurrentPage] = useState<number>(-1);
+  const [isActive, setIsActive] = useState<boolean>(false);
 
   function handleClick(index: number) {
     setCurrentPage(index === currentPage ? -1 : index);
@@ -27,44 +28,32 @@ const SideBar = ({ className }: HeaderProps) => {
 
         {nav.map((item, id) => {
           const currentIndex = currentPage === id;
-          const Button = item.children ? "button" : NavLink;
+          // const Button = item.children ? "button" : NavLink;
 
           return (
-            <div key={id} className={styles.sidebar__item}>
-              <Button
-                className={styles.sidebar__btn}
-                to={item.children ? "#" : item.url || ""}
-                onClick={() => {
-                  handleClick(id);
-                }}
-              >
-                {item.icon}
-                {item.text}
-              </Button>
-
-              <div
-                className={classNames(styles.sidebar__list, { [styles.active]: currentIndex && item.children })}
-                // Set the height of the menu based on the number of child items
-                ref={el => {
-                  if (el) el.style.setProperty("--menu-height", `${el.scrollHeight / 10}rem`);
-                }}
-              >
-                {item.children?.map((subitem, i) => (
-                  <div key={i} className={styles.sidebar__subItems}>
-                    <NavLink className={styles.sidebar__subItem} to={subitem.url}>
-                      {subitem.text}
-                    </NavLink>
-                  </div>
-                ))}
+            <div key={id} className={styles.sidebar__items}>
+              <div className={classNames(styles.sidebar__item, isActive ? styles.active : "")}>
+                <NavLink className={styles.sidebar__btn} to={item.children ? "#" : item.url || ""}>
+                  {item.icon}
+                  {item.text}
+                </NavLink>
+                {item.children && (
+                  <button
+                    className={classNames(styles.sidebar__arrow, isActive ? styles.active : "")}
+                    onClick={() => {
+                      handleClick(id);
+                      setIsActive(prev => !prev);
+                    }}
+                  ></button>
+                )}
               </div>
 
               {currentIndex && item.children && (
                 <div
-                  className={styles.sidebar__list}
-                  // Set the height of the menu based on the number of child items
-                  // ref={el => {
-                  //   if (el) el.style.setProperty("--menu-height", `${el.scrollHeight / 10}rem`);
-                  // }}
+                  className={classNames(styles.sidebar__list, isActive ? styles.active : "")}
+                  ref={el => {
+                    if (el) el.style.setProperty("--menu-height", `${el.scrollHeight / 10}rem`);
+                  }}
                 >
                   {item.children.map((subitem, i) => (
                     <div key={i} className={styles.sidebar__subItems}>

@@ -52,11 +52,11 @@ const nav: Nav[] = [
     text: "Activity",
     icon: <ActivitySvg />,
     children: [
+      { url: screenShotsPath, text: "Screenshots" },
       {
         url: appsPath,
         text: "Apps"
       },
-      { url: screenShotsPath, text: "Screenshots" },
       { url: urlPath, text: "URLs" }
     ]
   },
