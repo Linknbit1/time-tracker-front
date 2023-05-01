@@ -59,6 +59,7 @@
       min-width: rem(18);
       @include square(18);
     }
+
     &[aria-current="page"] {
       color: map-get($colors, bright-blue-color);
       background-color: transparent;

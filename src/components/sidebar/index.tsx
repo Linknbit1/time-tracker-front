@@ -62,9 +62,9 @@ const SideBar = ({ className }: HeaderProps) => {
                 <div
                   className={styles.sidebar__list}
                   // Set the height of the menu based on the number of child items
-                  ref={el => {
-                    if (el) el.style.setProperty("--menu-height", `${el.scrollHeight / 10}rem`);
-                  }}
+                  // ref={el => {
+                  //   if (el) el.style.setProperty("--menu-height", `${el.scrollHeight / 10}rem`);
+                  // }}
                 >
                   {item.children.map((subitem, i) => (
                     <div key={i} className={styles.sidebar__subItems}>
