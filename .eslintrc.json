@@ -1,16 +1,12 @@
 {
-  "extends": [
-    "prettier",
-    "eslint:recommended",
-    "plugin:@typescript-eslint/recommended"
-  ],
+  "extends": ["prettier", "eslint:recommended", "plugin:@typescript-eslint/recommended"],
   "rules": {
     // A temporary hack related to IDE not resolving correct package.json
     "import/no-extraneous-dependencies": "off",
     "react/react-in-jsx-scope": "off",
     "react/jsx-filename-extension": "off",
     "import/extensions": "off",
-    "no-console": "warn",
+    // "no-console": "warn",
     "import/no-unresolved": "off",
     "import/no-import-module-exports": "off",
     "react/jsx-props-no-spreading": "off",
@@ -33,14 +29,7 @@
     "import/order": [
       "error",
       {
-        "groups": [
-          "builtin",
-          "external",
-          "internal",
-          "parent",
-          "sibling",
-          "index"
-        ],
+        "groups": ["builtin", "external", "internal", "parent", "sibling", "index"],
         "newlines-between": "always",
         "alphabetize": {
           "order": "asc",
@@ -74,12 +63,7 @@
     ]
   },
   "parser": "@typescript-eslint/parser",
-  "plugins": [
-    "prettier",
-    "react",
-    "import",
-    "@typescript-eslint"
-  ],
+  "plugins": ["prettier", "react", "import", "@typescript-eslint"],
   "parserOptions": {
     "ecmaVersion": 2020,
     "sourceType": "module",

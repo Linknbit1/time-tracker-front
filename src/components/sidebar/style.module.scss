@@ -1,44 +1,75 @@
 @use "../../app/import.scss" as *;
 
 .sidebar {
+  $parent: &;
   display: grid;
+  position: relative;
   grid-area: sidebar / 1 / span 2;
   background: map-get($colors, clr-gray-blue);
-  border-right: rem(1) solid #ddd;
-  // border-right: rem(1) solid map-get($colors, gray-shade-color);
+  border-right: rem(1) solid var(--clr-light-Gray);
   @extend %fw-400;
 
   &__logoLink {
-    display: block;
-    margin-top: 15px;
-    padding: 0 25px 0 25px;
-    margin-bottom: rem(20);
+    @include flex($align-item: center, $gap: rem(5));
+    padding: 0 0 rem(3) rem(22);
+    margin-top: rem(15);
+    margin-bottom: rem(10);
+    @extend %fw-700;
+    color: var(--clr-gunmeta-blue);
+    letter-spacing: rem(1);
   }
 
+  &__logo-text {
+    font-size: rem(23);
+    @extend %transition;
+  }
+
+  &__toggler {
+    position: absolute;
+    top: rem(10);
+    right: rem(-12);
+    width: rem(24);
+    height: rem(24);
+    @include flex(center, center);
+    background-color: var(--clr-white);
+    border: rem(1) solid var(--clr-light-Gray);
+    border-radius: 50%;
+    cursor: pointer;
+    @extend %transition;
+
+    &--open {
+      transform: rotate(-180deg);
+      @extend %transition;
+    }
+  }
   &__items {
     color: map-get($colors, clr-gunmeta-blue) !important;
-    @include flex(null, column, rem(10), $direction: column);
-    padding: 8px 25px;
+    @include flex(null, column, $direction: column);
     font-size: var(--fs-14);
     @extend %p-relative;
     font-family: var(--family);
+    max-width: 100%;
+    padding: 0 rem(18) 0 rem(26);
   }
   &__item {
-    @include flex($gap: rem(20));
-    padding: rem(11);
+    @include flex();
+    @include flex(center, $gap: rem(8));
+    height: rem(46);
   }
 
   &__btn {
-    @include flex(center, $gap: rem(11));
+    @include flex(center, $gap: rem(8));
+    position: relative;
+
     height: rem(24);
-    width: 100%;
+    width: 87%;
     white-space: nowrap;
     border: none;
     color: lighten(map-get($colors, clr-gunmeta-blue), 0);
     background-color: transparent;
     text-decoration: none;
     @extend %p-relative;
-
+    margin: rem(2) 0 rem(0) rem(2);
     &:focus {
       color: var(--clr-bright-blue);
       @extend %fw-500;
@@ -50,31 +81,40 @@
     }
 
     svg {
-      min-width: rem(18);
-      @include square(30);
+      min-width: rem(14);
+      @include square(20);
     }
     &[aria-current="page"] {
       color: var(--clr-bright-blue);
       background-color: transparent;
       @extend %fw-500;
+      &::before {
+        content: "";
+        position: absolute;
+        left: rem(-28);
+        height: rem(24);
+        width: rem(3);
+        background-color: var(--clr-bright-blue);
+      }
     }
   }
   &__arrow {
     background-color: transparent;
+    margin: rem(5) 0 0 rem(5);
     border: none;
     cursor: pointer;
 
     &::before {
       content: "";
       display: block;
-      @include square(24);
+      @include square(15);
       margin-inline-start: auto;
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M15.75 19.5L8.25 12l7.5-7.5' /%3E%3C/svg%3E");
       background-size: cover;
       transform: rotate(0deg);
+
       @extend %transition;
     }
-
     &.active {
       &::before {
         transform: rotate(-90deg);
@@ -84,50 +124,140 @@
   }
 
   &__list {
-    padding: 0 rem(28);
-    transition: max-height 0.5s ease-in-out; // Use max-height to animate the height of the list
     overflow: hidden;
+    transition: max-height 0.3s ease-out;
 
-    &.active {
+    &:not(&--open) {
+      max-height: 0 !important;
+    }
+    &--open {
       max-height: var(--menu-height);
     }
   }
 
   &__subItem {
     color: map-get($colors, clr-gunmeta-blue);
-    width: 100%;
     @include flex(center, $gap: rem(11));
     text-decoration: none;
-    height: rem(28);
-    margin: rem(18) 0;
     font-size: var(--fs-12);
-    padding: rem(17) rem(0) rem(17) rem(15);
+    height: rem(24);
+    margin: 0 0 rem(11) 0;
+    padding: 0 rem(12);
+    // display: block;
+
     transition: height 2s ease-out;
     &:hover {
       color: var(--clr-bright-blue);
     }
 
-    // &:focus {
-    //   padding: rem(5) rem(0) rem(5) rem(10);
-    //   border-radius: rem(10);
-    //   color: var(--clr-bright-blue);
-    //   @extend %fw-500;
-    // }
-    // &[aria-current="page"] {
-    //   color: var(--clr-bright-blue);
-    //   background-color: var(--clr-pale-blue);
-    //   border-radius: rem(15);
-    //   @extend %fw-400;
-    //   padding: rem(18) rem(0) rem(18) rem(18);
-    //   // border: 2px solid red;
-    // }
     &[aria-current="page"] {
       color: var(--clr-bright-blue);
       background-color: var(--clr-pale-blue);
-      border-radius: rem(15);
-      @extend %fw-400;
-      padding: rem(18) rem(0) rem(18) rem(18);
+      border-radius: rem(20);
+      @extend %fw-500;
+      padding: 0 rem(12);
       transition: all 0.3s ease-in-out; // Add a transition property
+    }
+  }
+  &--minimized {
+    #{$parent}__logo-text {
+      font-size: 0;
+    }
+    #{$parent}__nav {
+      width: 100vw;
+    }
+    #{$parent}__link {
+      position: absolute;
+      left: calc(100% + rem(40));
+      border-radius: rem(5);
+      background: var(--clr-dark-gray);
+      color: var(--clr-white);
+      padding: rem(3) rem(6);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateX(-rem(10));
+      z-index: 1;
+
+      &::after {
+        content: "";
+        width: rem(7);
+        height: rem(11);
+        position: absolute;
+        background: var(--clr-dark-gray);
+        clip-path: polygon(100% 0, 0 50%, 100% 100%);
+        inset: 0 100% 0 auto;
+        margin: auto;
+      }
+    }
+    #{$parent}__items {
+      width: var(--sidebar);
+      position: relative;
+
+      &:hover {
+        #{$parent}__link {
+          opacity: 1;
+          visibility: visible;
+          transform: translateX(0);
+        }
+      }
+      #{$parent}__list {
+        position: absolute;
+        top: 0;
+        left: calc(100% + rem(20));
+        padding: rem(10);
+        width: rem(180);
+        background: var(--clr-white);
+        background-color: var(--clr-dark-gray);
+        box-shadow: rem(0) rem(0) rem(6) rgba(0, 0, 0, 0.16);
+        border-radius: rem(5);
+        opacity: 0;
+        visibility: hidden;
+        translate: rem(-20);
+        transition: all 0.3s;
+        overflow: visible;
+        max-height: var(--menu-height);
+
+        &::after {
+          display: block;
+          content: "";
+          width: rem(9);
+          height: rem(11);
+          position: absolute;
+          background: var(--clr-dark-gray);
+          clip-path: polygon(100% 0, 0 50%, 100% 100%);
+          top: rem(15);
+          left: rem(-9);
+          margin: auto;
+        }
+        &--open {
+          opacity: 1;
+          visibility: visible;
+          translate: 0;
+        }
+      }
+      #{$parent}__subItem {
+        @extend %fw-500;
+        padding: 0 rem(16);
+        // margin: rem(5) rem(5) rem(10) 0;
+
+        &[aria-current="page"] {
+          color: var(--clr-bright-blue);
+          background-color: var(--clr-Gainsboro) !important;
+          padding: 0 rem(16);
+          border-radius: rem(20);
+          @extend %fw-500;
+          transition: all 0.3s ease-in-out; // Add a transition property
+        }
+      }
+    }
+
+    #{$parent}__arrow {
+      display: none;
+    }
+  }
+  &--menu-open {
+    #{$parent}__link {
+      transition: all 0.2s;
     }
   }
 }

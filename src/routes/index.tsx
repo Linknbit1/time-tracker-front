@@ -1,7 +1,6 @@
 import React from "react";
 
 import Layout from "../components/layout";
-import * as paths from "../constants/routes";
 import AllReports from "../pages/allReports";
 import AmountOwned from "../pages/amountOwned";
 import Apps from "../pages/apps";
@@ -18,6 +17,8 @@ import TimeAndActivity from "../pages/time&Activity";
 import TimeSheet from "../pages/timeSheet";
 import Todo from "../pages/todo";
 import Url from "../pages/url";
+
+import * as paths from "./paths";
 
 interface RouterOptions {
   element: JSX.Element;
@@ -55,15 +56,15 @@ const routes: Route[] = [
         element: <TimeSheet />
       },
       {
-        path: paths.appsPath,
+        path: paths.activityAppsPath,
         element: <Apps />
       },
       {
-        path: paths.screenShotsPath,
+        path: paths.activitySSPath,
         element: <ScreenShots />
       },
       {
-        path: paths.urlPath,
+        path: paths.ActivityUrlPath,
         element: <Url />
       },
       {

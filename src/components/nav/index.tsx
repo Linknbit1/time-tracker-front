@@ -9,9 +9,11 @@ import { ReactComponent as ReportsSvg } from "../../assets/svg/reports.svg";
 import { ReactComponent as TeamsSvg } from "../../assets/svg/teams.svg";
 import { ReactComponent as TimeSheetSvg } from "../../assets/svg/timeSheet.svg";
 import {
+  ActivityUrlPath,
+  activityAppsPath,
+  activitySSPath,
   allReportsPath,
   amountOwedPath,
-  appsPath,
   dailyTotalPath,
   dashboardPath,
   expensesPath,
@@ -22,8 +24,7 @@ import {
   teamsPath,
   timeAndActivityPath,
   timeSheetsPath,
-  todoPath,
-  urlPath
+  todoPath
 } from "../../routes/paths";
 
 interface Button {
@@ -46,18 +47,18 @@ interface Nav extends Accordion {
 
 const nav: Nav[] = [
   { id: 0, url: dashboardPath, text: "Dashboard", icon: <DashboardSvg /> },
-  { id: 1, url: timeSheetsPath, text: "Time Sheets", icon: <TimeSheetSvg /> },
+  { id: 1, url: timeSheetsPath, text: "Timesheets", icon: <TimeSheetSvg /> },
   {
     id: 2,
     text: "Activity",
     icon: <ActivitySvg />,
     children: [
-      { url: screenShotsPath, text: "Screenshots" },
+      { url: activitySSPath, text: "Screenshots" },
       {
-        url: appsPath,
+        url: activityAppsPath,
         text: "Apps"
       },
-      { url: urlPath, text: "URLs" }
+      { url: ActivityUrlPath, text: "URLs" }
     ]
   },
   { id: 3, url: insightsPath, text: "Insights", icon: <InsightSvg /> },
