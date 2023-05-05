@@ -20,7 +20,6 @@ import {
   insightsPath,
   paymentsPath,
   projectPath,
-  screenShotsPath,
   teamsPath,
   timeAndActivityPath,
   timeSheetsPath,

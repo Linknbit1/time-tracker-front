@@ -2,7 +2,6 @@ import classNames from "classnames";
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 
-// import { ReactComponent as HubStaffSvg } from "../../assets/svg/hubStaffLogo.svg";
 import { ReactComponent as TogglerSvg } from "../../assets/svg/toggler.svg";
 import useStore from "../../store";
 import nav from "../nav";
@@ -33,9 +32,6 @@ const SideBar = () => {
     }
   }, [sidebarStatus]);
 
-  console.log(currentPage);
-  console.log(sidebarStatus);
-
   return (
     <aside className={classNames(styles.sidebar, { [styles["sidebar--minimized"]]: !sidebarStatus, [styles["sidebar--menu-open"]]: !menu })}>
       <div className={styles.sidebar__content}>
@@ -58,7 +54,6 @@ const SideBar = () => {
         >
           <TogglerSvg />
         </div>
-
         <div className={styles.sidebar__nav}>
           {nav.map((item, id) => {
             return (
@@ -84,7 +79,6 @@ const SideBar = () => {
                     ></button>
                   )}
                 </div>
-
                 {item.children && (
                   <div
                     className={classNames(styles.sidebar__list, currentPage === id ? styles["sidebar__list--open"] : "")}

@@ -3,27 +3,26 @@
 .topBar {
   @include flex($align-item: center, $justify-content: space-between);
   padding: 0 rem(40);
-  border-bottom: 1px solid #ddd;
+  border-bottom: rem(1) solid var(--clr-light-Gray);
   &__download {
     max-width: rem(144);
     height: rem(32);
-    border-radius: 20px;
-    border: 1px solid #e4e9ef;
-    padding: 8px 38px;
+    border-radius: rem(20);
+    border: rem(1) solid var(--clr-light-blue-grey);
+    padding: rem(8) rem(38);
     font-size: rem(14);
   }
   &__btn {
     text-decoration: none;
-    color: #2aa7ff;
+    color: var(--clr-bright-blue);
   }
   &__profile {
-    // margin-right: rem(15);
-    @include flex($align-item: center, $justify-content: space-between, $gap: rem(10));
+    @include flex(center, space-between, $gap: rem(10));
 
     img {
       border-radius: rem(50);
       height: rem(28);
-      @include flex($align-item: center, $justify-content: space-between);
+      @include flex(center, space-between);
     }
   }
 }

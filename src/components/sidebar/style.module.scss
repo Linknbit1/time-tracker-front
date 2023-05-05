@@ -3,7 +3,7 @@
 .sidebar {
   $parent: &;
   display: grid;
-  position: relative;
+  @extend %p-relative;
   grid-area: sidebar / 1 / span 2;
   background: map-get($colors, clr-gray-blue);
   border-right: rem(1) solid var(--clr-light-Gray);
@@ -15,17 +15,18 @@
     margin-top: rem(15);
     margin-bottom: rem(10);
     @extend %fw-700;
-    color: var(--clr-gunmeta-blue);
+    color: var(--clr-gunMeta-blue);
     letter-spacing: rem(1);
   }
 
   &__logo-text {
-    font-size: rem(23);
+    font-size: var(--fs-23);
     @extend %transition;
   }
 
   &__toggler {
-    position: absolute;
+    @extend %p-absolute;
+
     top: rem(10);
     right: rem(-12);
     width: rem(24);
@@ -34,7 +35,7 @@
     background-color: var(--clr-white);
     border: rem(1) solid var(--clr-light-Gray);
     border-radius: 50%;
-    cursor: pointer;
+    @extend %pointer;
     @extend %transition;
 
     &--open {
@@ -43,29 +44,25 @@
     }
   }
   &__items {
-    color: map-get($colors, clr-gunmeta-blue) !important;
+    color: var (--clr-gunMeta-blue) !important;
     @include flex(null, column, $direction: column);
     font-size: var(--fs-14);
     @extend %p-relative;
-    font-family: var(--family);
     max-width: 100%;
     padding: 0 rem(18) 0 rem(26);
   }
   &__item {
-    @include flex();
     @include flex(center, $gap: rem(8));
     height: rem(46);
   }
 
   &__btn {
     @include flex(center, $gap: rem(8));
-    position: relative;
-
+    @extend %p-relative;
     height: rem(24);
     width: 87%;
-    white-space: nowrap;
     border: none;
-    color: lighten(map-get($colors, clr-gunmeta-blue), 0);
+    color: lighten(map-get($colors, clr-gunMeta-blue), 0);
     background-color: transparent;
     text-decoration: none;
     @extend %p-relative;
@@ -77,7 +74,7 @@
 
     &:hover {
       color: var(--clr-bright-blue);
-      cursor: pointer;
+      @extend %pointer;
     }
 
     svg {
@@ -86,11 +83,10 @@
     }
     &[aria-current="page"] {
       color: var(--clr-bright-blue);
-      background-color: transparent;
       @extend %fw-500;
       &::before {
         content: "";
-        position: absolute;
+        @extend %p-absolute;
         left: rem(-28);
         height: rem(24);
         width: rem(3);
@@ -102,17 +98,14 @@
     background-color: transparent;
     margin: rem(5) 0 0 rem(5);
     border: none;
-    cursor: pointer;
-
+    @extend %pointer;
     &::before {
       content: "";
-      display: block;
+      @extend %d-block;
       @include square(15);
       margin-inline-start: auto;
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M15.75 19.5L8.25 12l7.5-7.5' /%3E%3C/svg%3E");
-      background-size: cover;
       transform: rotate(0deg);
-
       @extend %transition;
     }
     &.active {
@@ -124,7 +117,8 @@
   }
 
   &__list {
-    overflow: hidden;
+    @extend %overflow-hidden;
+
     transition: max-height 0.3s ease-out;
 
     &:not(&--open) {
@@ -136,15 +130,14 @@
   }
 
   &__subItem {
-    color: map-get($colors, clr-gunmeta-blue);
-    @include flex(center, $gap: rem(11));
+    width: 87%;
+    color: map-get($colors, clr-gunMeta-blue);
+    @include flex(center);
     text-decoration: none;
     font-size: var(--fs-12);
     height: rem(24);
-    margin: 0 0 rem(11) 0;
+    margin: 0 0 rem(11) rem(19);
     padding: 0 rem(12);
-    // display: block;
-
     transition: height 2s ease-out;
     &:hover {
       color: var(--clr-bright-blue);
@@ -167,22 +160,23 @@
       width: 100vw;
     }
     #{$parent}__link {
-      position: absolute;
+      @extend %p-absolute;
       left: calc(100% + rem(40));
       border-radius: rem(5);
       background: var(--clr-dark-gray);
       color: var(--clr-white);
       padding: rem(3) rem(6);
       opacity: 0;
-      visibility: hidden;
-      transform: translateX(-rem(10));
+      @extend %overflow-hidden;
+
+      transform: translateX(rem(-10));
       z-index: 1;
 
       &::after {
         content: "";
         width: rem(7);
         height: rem(11);
-        position: absolute;
+        @extend %p-absolute;
         background: var(--clr-dark-gray);
         clip-path: polygon(100% 0, 0 50%, 100% 100%);
         inset: 0 100% 0 auto;
@@ -191,38 +185,37 @@
     }
     #{$parent}__items {
       width: var(--sidebar);
-      position: relative;
+      @extend %p-relative;
 
       &:hover {
         #{$parent}__link {
           opacity: 1;
-          visibility: visible;
+          @extend %overflow-visible;
           transform: translateX(0);
         }
       }
       #{$parent}__list {
-        position: absolute;
+        @extend %p-absolute;
         top: 0;
         left: calc(100% + rem(20));
         padding: rem(10);
-        width: rem(180);
+        width: rem(160);
         background: var(--clr-white);
-        background-color: var(--clr-dark-gray);
         box-shadow: rem(0) rem(0) rem(6) rgba(0, 0, 0, 0.16);
         border-radius: rem(5);
         opacity: 0;
-        visibility: hidden;
+        @extend %overflow-hidden;
         translate: rem(-20);
-        transition: all 0.3s;
-        overflow: visible;
+        @extend %transition;
+        @extend %overflow-visible;
         max-height: var(--menu-height);
 
         &::after {
-          display: block;
+          @extend %d-block;
           content: "";
           width: rem(9);
           height: rem(11);
-          position: absolute;
+          @extend %p-absolute;
           background: var(--clr-dark-gray);
           clip-path: polygon(100% 0, 0 50%, 100% 100%);
           top: rem(15);
@@ -231,15 +224,15 @@
         }
         &--open {
           opacity: 1;
-          visibility: visible;
+          @extend %overflow-visible;
+
           translate: 0;
         }
       }
       #{$parent}__subItem {
         @extend %fw-500;
-        padding: 0 rem(16);
-        // margin: rem(5) rem(5) rem(10) 0;
-
+        padding: 0 rem(16) !important;
+        margin: 0 !important;
         &[aria-current="page"] {
           color: var(--clr-bright-blue);
           background-color: var(--clr-Gainsboro) !important;
@@ -252,12 +245,12 @@
     }
 
     #{$parent}__arrow {
-      display: none;
+      @extend %d-none;
     }
   }
   &--menu-open {
     #{$parent}__link {
-      transition: all 0.2s;
+      @extend %transition;
     }
   }
 }

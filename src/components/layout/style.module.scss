@@ -7,7 +7,7 @@
 
   display: grid;
   grid-template-columns: var(--sidebar) 1fr;
-  grid-template-rows: 46px 1fr;
+  grid-template-rows: rem(46) 1fr;
   grid-template-areas:
     "sidebar header"
     "sidebar content";
