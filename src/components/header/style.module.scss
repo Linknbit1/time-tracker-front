@@ -29,17 +29,15 @@
   &__profile {
     border-right: rem(1) solid var(--clr-light-Gray);
     padding-right: rem(10);
-    position: relative;
+    @extend %p-relative;
     @extend %pointer;
   }
   &__dropDown {
-    position: absolute;
-    top: rem(43);
-    right: rem(5);
+    @extend %p-absolute;
+    inset: rem(43) rem(5) auto auto;
     width: rem(150);
     box-shadow: rem(0) rem(2) rem(10) rgba(1, 1, 1, 0.15);
     border-radius: rem(6);
-    @extend %overflow-hidden;
     transform: translateY(rem(10));
     opacity: 0;
     visibility: hidden;

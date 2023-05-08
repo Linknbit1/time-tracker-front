@@ -6,7 +6,7 @@
     @include flex($gap: rem(10));
     text-decoration: none;
     font-size: rem(14);
-    color: #333333;
+    color: var(--clr-charcoal-gray);
     padding: rem(5) rem(10);
     &:hover {
       color: var(--clr-bright-blue);
