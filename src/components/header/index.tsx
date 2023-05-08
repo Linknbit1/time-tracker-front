@@ -16,8 +16,6 @@ const Header = () => {
     setIsDropDownOpen(prev => !prev);
   }
 
-  console.log(isDropDownOpen);
-
   return (
     <header className={styles.topBar}>
       <span className={styles.topBar__download}>
