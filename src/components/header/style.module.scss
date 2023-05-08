@@ -9,20 +9,46 @@
     height: rem(32);
     border-radius: rem(20);
     border: rem(1) solid var(--clr-light-blue-grey);
-    padding: rem(8) rem(38);
+    padding: rem(8) rem(20);
     font-size: rem(14);
   }
   &__btn {
+    @include flex($gap: rem(5));
     text-decoration: none;
     color: var(--clr-bright-blue);
   }
-  &__profile {
+  &__images {
     @include flex(center, space-between, $gap: rem(10));
 
     img {
       border-radius: rem(50);
       height: rem(28);
       @include flex(center, space-between);
+    }
+  }
+  &__profile {
+    border-right: rem(1) solid var(--clr-light-Gray);
+    padding-right: rem(10);
+    position: relative;
+    @extend %pointer;
+  }
+  &__dropDown {
+    position: absolute;
+    top: rem(43);
+    right: rem(5);
+    width: rem(150);
+    box-shadow: rem(0) rem(2) rem(10) rgba(1, 1, 1, 0.15);
+    border-radius: rem(6);
+    @extend %overflow-hidden;
+    transform: translateY(rem(10));
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.1s ease-in-out;
+
+    &--open {
+      transform: translateY(0);
+      opacity: 1;
+      visibility: visible;
     }
   }
 }

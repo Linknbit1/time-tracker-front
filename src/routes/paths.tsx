@@ -17,6 +17,7 @@ export const amountOwedPath = "/amount-owed";
 export const paymentsPath = "/payments";
 export const allReportsPath = "/all-reports";
 export const dailyTotalPath = "/daily-total";
+export const myAccountPath = "/accounts";
 // auth
 export const loginPath = "/login/";
 

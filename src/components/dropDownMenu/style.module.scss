@@ -1,0 +1,21 @@
+@use "../../app/import.scss" as *;
+.dropDownMenu {
+  padding: rem(8);
+  @extend %pointer;
+  &__link {
+    @include flex($gap: rem(10));
+    text-decoration: none;
+    font-size: rem(14);
+    color: #333333;
+    padding: rem(5) rem(10);
+    &:hover {
+      color: var(--clr-bright-blue);
+      @extend %pointer;
+    }
+    background-color: transparent;
+    border: none;
+  }
+  svg {
+    @include square(18);
+  }
+}

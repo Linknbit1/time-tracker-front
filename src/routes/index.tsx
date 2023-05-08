@@ -9,6 +9,7 @@ import DailyTotal from "../pages/dailyTotal";
 import Dashboard from "../pages/dashboard";
 import Expenses from "../pages/expenses";
 import Insights from "../pages/insights";
+import MyAccount from "../pages/myAccount";
 import Payments from "../pages/payments";
 import Projects from "../pages/projects";
 import ScreenShots from "../pages/screenShots";
@@ -106,6 +107,10 @@ const routes: Route[] = [
       {
         path: paths.expensesPath,
         element: <Expenses />
+      },
+      {
+        path: paths.myAccountPath,
+        element: <MyAccount />
       }
     ]
   }
