@@ -10,7 +10,6 @@ import styles from "./style.module.scss";
 
 const SideBar = () => {
   const [currentPage, setCurrentPage] = useState<number>(-1);
-  const [navbarOpen, setNavbarOpen] = useState<boolean>(false);
   const [menu, setMenu] = useState(false);
   const { setSidebarStatus, sidebarStatus } = useStore();
 
@@ -46,9 +45,8 @@ const SideBar = () => {
         </a>
 
         <div
-          className={classNames(styles.sidebar__toggler, navbarOpen && styles["sidebar__toggler--open"])}
+          className={classNames(styles.sidebar__toggler, { [styles["sidebar__toggler--open"]]: !sidebarStatus })}
           onClick={() => {
-            setNavbarOpen(prev => !prev);
             toggleSidebar();
           }}
         >

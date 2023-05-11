@@ -1,0 +1,48 @@
+@use "../../app/import.scss" as *;
+
+.timeBar {
+  border-radius: rem(12);
+  height: rem(36);
+  @include flex($direction: column, $align-item: center);
+
+  &__body {
+    @extend %d-block;
+    height: rem(16);
+    width: 100%;
+    background-color: var(--clr-light-blue-gray);
+    border-radius: rem(12);
+    @extend %p-relative;
+    // border: 2px solid red;
+
+    &::hover {
+      cursor: pointer;
+    }
+  }
+  &__futureBar {
+    @extend %p-absolute;
+    height: 100%;
+    border-top-right-radius: rem(8);
+    border-bottom-right-radius: rem(8);
+    background-color: var(--clr-pale-powder-blue);
+    width: var(--future-width);
+    right: 0;
+    top: 0;
+  }
+  &__futureBar::before {
+    content: "";
+    @extend %p-absolute;
+    left: 0;
+    top: rem(-6);
+    width: rem(2);
+    background-color: var(--clr-pale-powder-blue);
+    height: rem(28);
+  }
+  &__timeLapse {
+    @extend %p-absolute;
+    width: calc(var(--end-time) - var(--time-start));
+    left: var(--time-start);
+    height: 100%;
+    background-color: var(--color-time-span);
+    border-radius: rem(12);
+  }
+}

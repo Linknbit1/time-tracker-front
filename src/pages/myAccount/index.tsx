@@ -1,7 +1,13 @@
 import React from "react";
 
+import Content from "../../components/content";
+
 const MyAccount = () => {
-  return <div>MyAccount</div>;
+  return (
+    <Content type={1}>
+      <div>zain</div>
+    </Content>
+  );
 };
 
 export default MyAccount;

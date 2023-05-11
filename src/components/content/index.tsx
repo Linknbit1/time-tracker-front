@@ -1,8 +1,14 @@
+// import classNames from "classnames";
 import React from "react";
 
 import styles from "./style.module.scss";
 
-const Content = ({ children }: { children: React.ReactElement<HTMLDivElement> }) => {
+interface ContentProps {
+  type?: number;
+  children: React.ReactElement<HTMLDivElement>;
+}
+
+const Content = ({ children }: ContentProps) => {
   return <div className={styles.content}>{children}</div>;
 };
 
