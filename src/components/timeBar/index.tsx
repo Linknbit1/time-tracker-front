@@ -25,14 +25,15 @@ const TimeBar = ({ setActivityTotal }: { setActivityTotal: (newTotal: string) =>
     const activity = secondsToEnd - secondsToStart;
 
     return {
+      startTime: startTime,
+      endTime: endTime,
       startTimeInSeconds: secondsToStart,
       endTimeInSeconds: secondsToEnd,
       spanColor: timeSlot.color,
-      activity: activity
+      activity: activity,
+      project: timeSlot.projectName
     };
   });
-
-  // calculating total daily activity
 
   let activitySum = 0;
   for (let i = 0; i < timeSlotsInSeconds.length; i++) {
@@ -66,7 +67,13 @@ const TimeBar = ({ setActivityTotal }: { setActivityTotal: (newTotal: string) =>
                   } as CustomCSSProperties
                 }
               >
-                <div className={styles.timeBar__info}>zain</div>
+                <div className={styles.timeBar__info}>
+                  <div className={styles.timeBar__project} >{timeSlotsInSecond.project}</div>
+                  <div className={styles.timeBar__time}>
+                    {new Date(timeSlotsInSecond.startTime).toLocaleTimeString()}
+                    {new Date(timeSlotsInSecond.endTime).toLocaleTimeString()}
+                  </div>
+                </div>
               </div>
             </div>
           );
