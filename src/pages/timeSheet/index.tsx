@@ -5,7 +5,7 @@ import TimeBar from "../../components/timeBar";
 import TimeToday from "../../components/todayTime";
 
 const TimeSheet = () => {
-  const [activityTotal, setActivityTotal] = useState<number>(0);
+  const [activityTotal, setActivityTotal] = useState<string>("");
 
   return (
     <div>

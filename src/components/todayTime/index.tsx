@@ -2,9 +2,7 @@ import React from "react";
 
 import styles from "./style.module.scss";
 
-const TimeToday = ({ activityTotal }: { activityTotal: number }) => {
-  // const currentTime = new Date().toLocaleTimeString();
-
+const TimeToday = ({ activityTotal }: { activityTotal: string }) => {
   return (
     <div className={styles.time}>
       <h4>

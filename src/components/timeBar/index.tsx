@@ -11,7 +11,7 @@ interface CustomCSSProperties extends CSSProperties {
   "--time-start"?: string;
   "--color-time-span": string;
 }
-const TimeBar = ({ setActivityTotal }: { setActivityTotal: (newTotal: number) => void }) => {
+const TimeBar = ({ setActivityTotal }: { setActivityTotal: (newTotal: string) => void }) => {
   const daySeconds = 86400;
   const beginningOfDay = new Date();
   beginningOfDay.setHours(0, 0, 0, 0);
@@ -31,11 +31,19 @@ const TimeBar = ({ setActivityTotal }: { setActivityTotal: (newTotal: number) =>
       activity: activity
     };
   });
+
+  // calculating total daily activity
+
   let activitySum = 0;
   for (let i = 0; i < timeSlotsInSeconds.length; i++) {
     activitySum += timeSlotsInSeconds[i].activity;
   }
-  setActivityTotal((activitySum / 100) * 24);
+  const totalSecondsOfWork = Math.floor((activitySum / 100) * daySeconds); // Calculate total seconds of work
+  const hours = Math.floor(totalSecondsOfWork / 3600); // Calculate hours
+  const minutes = Math.floor((totalSecondsOfWork % 3600) / 60); // Calculate minutes
+  const seconds = totalSecondsOfWork % 60; // Calculate seconds
+  const totalTime = `${hours}:${minutes}:${seconds}`;
+  setActivityTotal(totalTime);
 
   return (
     <div
@@ -46,17 +54,21 @@ const TimeBar = ({ setActivityTotal }: { setActivityTotal: (newTotal: number) =>
         <div className={styles.timeBar__futureBar}></div>
         {timeSlotsInSeconds.map((timeSlotsInSecond, id) => {
           return (
-            <div
-              key={id}
-              className={styles.timeBar__timeLapse}
-              style={
-                {
-                  "--time-start": `${timeSlotsInSecond.startTimeInSeconds}%`,
-                  "--end-time": `${timeSlotsInSecond.endTimeInSeconds}%`,
-                  "--color-time-span": `${timeSlotsInSecond.spanColor}`
-                } as CustomCSSProperties
-              }
-            ></div>
+            <div className={styles.timeBar__timeSpans}>
+              <div
+                key={id}
+                className={styles.timeBar__timeSpan}
+                style={
+                  {
+                    "--time-start": `${timeSlotsInSecond.startTimeInSeconds}%`,
+                    "--end-time": `${timeSlotsInSecond.endTimeInSeconds}%`,
+                    "--color-time-span": `${timeSlotsInSecond.spanColor}`
+                  } as CustomCSSProperties
+                }
+              >
+                <div className={styles.timeBar__info}>zain</div>
+              </div>
+            </div>
           );
         })}
       </div>
