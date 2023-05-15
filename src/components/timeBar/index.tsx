@@ -70,7 +70,7 @@ const TimeBar = ({ setActivityTotal }: { setActivityTotal: (newTotal: string) =>
                 <div className={styles.timeBar__info}>
                   <div className={styles.timeBar__project} >{timeSlotsInSecond.project}</div>
                   <div className={styles.timeBar__time}>
-                    {new Date(timeSlotsInSecond.startTime).toLocaleTimeString()}
+                    {new Date(timeSlotsInSecond.startTime).toLocaleTimeString()} - 
                     {new Date(timeSlotsInSecond.endTime).toLocaleTimeString()}
                   </div>
                 </div>

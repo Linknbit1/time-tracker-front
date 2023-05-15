@@ -6,6 +6,7 @@ type TimeSlots = {
 };
 
 const timeSlots: TimeSlots[] = [
+  { projectName: "gym app", startTime: new Date().setHours(0, 50, 0, 0), endTime: new Date().setHours(1, 20, 0, 0), color: "#216974" },
   { projectName: "gym app", startTime: new Date().setHours(9, 0, 0, 0), endTime: new Date().setHours(10, 0, 0, 0), color: "#216974" },
   { projectName: "tailor app", startTime: new Date().setHours(10, 30, 0, 0), endTime: new Date().setHours(10, 50, 0, 0), color: "#d1711f" },
   { projectName: "lms app", startTime: new Date().setHours(11, 30, 0, 0), endTime: new Date().setHours(12, 30, 0, 0), color: "#478ba2" },

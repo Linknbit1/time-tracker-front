@@ -1,7 +1,5 @@
 @use "../../app/import.scss" as *;
 .content {
   grid-area: content / 2 / span 2;
-  // margin: 30px 30px 0;
-  border: 2px solid red;
   padding: 30px 30px 0;
 }

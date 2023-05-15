@@ -1,0 +1,99 @@
+@use "../../app/import.scss" as *;
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+
+  &__th,
+  &__td {
+    padding-inline: rem(12);
+    color: lighten(map-get($colors, clr-black), 40%);
+    @extend %fw-400;
+    @extend %text-start;
+
+    &:not(:first-child) {
+      padding-inline-end: rem(12);
+    }
+
+    &:not(:last-child) {
+      padding-inline-start: rem(12);
+    }
+  }
+
+  &__th {
+    padding-block: rem(12);
+    font-size: var(--fs-14);
+    line-height: 1.643;
+    white-space: nowrap;
+    @extend %p-relative;
+    @extend %isolate;
+    @extend %fw-500;
+    border-bottom: 2px solid #e4e9ef;
+    color: #2b343f;
+
+
+    &::after {
+      content: "";
+      inset: 0;
+      z-index: -1;
+      background-color: var(--clr-baby-powder);
+      border-radius: rem(4);
+      @extend %p-absolute;
+      @extend %pointer-none;
+    }
+  }
+
+  &__body {
+    &:empty {
+      height: rem(42.5);
+      color: lighten(map-get($colors, clr-black), 40%);
+      @extend %p-relative;
+
+      &::after {
+        content: "No Data";
+        inset: 0;
+        font-size: var(--fs-14);
+        @extend %p-absolute;
+        @extend %centralize;
+      }
+    }
+  }
+
+  &__td {
+    max-width: var(--col-width);
+    padding-block: rem(5);
+    font-size: var(--fs-13);
+    line-height: 1.5;
+    border-block-end: rem(1) solid rgba(map-get($colors, clr-black), 0.07);
+  }
+
+  &__cell {
+    @include flex(flex-start, $justify-content: center, $direction: column);
+    min-height: rem(43);
+    text-overflow: ellipsis;
+    // @extend %overflow-hidden;
+
+    a:not([class]):first-child:last-child {
+      text-decoration: rem(1) solid transparent;
+      color: var(--clr-cornflower-blue);
+      outline-offset: rem(4);
+      @extend %transition;
+
+      &:hover {
+        text-decoration: underline rem(1) solid currentColor;
+      }
+
+      &:focus {
+        outline: rem(1) solid;
+        border-radius: rem(2);
+      }
+    }
+  }
+
+  input[type="checkbox"] {
+    &:focus {
+      outline: rem(1) solid;
+      outline-offset: rem(2);
+    }
+  }
+}
