@@ -6,7 +6,7 @@ import styles from "./style.module.scss";
 type Option = {
   label: string;
   value: string;
-}
+};
 interface TableColumn {
   name: string | any;
   span?: string;
@@ -37,7 +37,7 @@ function Table({ columns, data, limit }: TableProps) {
 
   const col = columns.filter((obj, index, self) => index === self.findIndex(o => o.name === obj.name));
 
-  console.log(data);
+  console.log(col);
 
   return (
     <div className={styles.table__container}>
@@ -73,6 +73,15 @@ function Table({ columns, data, limit }: TableProps) {
                 >
                   <div className={styles.table__cell} title={column.title ? column.selector(val) : ""}>
                     {column.selector(val)}
+                    {column.options && (
+                      <select className={styles.table__select}>
+                        {column.options.map(option => (
+                          <option key={option.value} value={option.value}>
+                            {option.label}
+                          </option>
+                        ))}
+                      </select>
+                    )}
                   </div>
                 </td>
               ))}

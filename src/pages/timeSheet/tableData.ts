@@ -1,9 +1,5 @@
 import React from "react";
 
-type Option = {
-  label: string;
-  value: string;
-}
 type MyRowType = {
   project: string;
   Activity: string;
@@ -11,11 +7,21 @@ type MyRowType = {
   Manual: string;
   Duration: string;
   Time: string;
-  Actions?: string;
-  selectedOption?: Option;
+  selectedOption: string;
 };
+interface Column {
+  name: string;
+  span: string;
+  selector: (row: MyRowType) => any;
+  options?: Option[];
+}
 
-export const columns = [
+interface Option {
+  label: string;
+  value: string;
+}
+
+export const columns: Column[] = [
   {
     name: "Project",
     span: "9.90%",
@@ -51,9 +57,9 @@ export const columns = [
     span: "11.13%",
     selector: (row: MyRowType) => row.selectedOption,
     options: [
-      { label: "Option 1", value: "1" },
-      { label: "Option 2", value: "2" },
-      { label: "Option 3", value: "3" }
+      { label: "Edit time entry", value: "1" },
+      { label: "Split time entry", value: "2" },
+      { label: "Delete time entry", value: "3" }
     ]
   }
 ];

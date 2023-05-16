@@ -1,10 +1,18 @@
+import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
+import LightModeOutlinedIcon from "@mui/icons-material/LightModeOutlined";
+import IconButton from "@mui/material/IconButton";
+import { Box, useTheme } from "@mui/system";
 import classNames from "classnames";
 import React, { useRef, useState } from "react";
+import { useContext } from "react";
 import { NavLink } from "react-router-dom";
 
 import { ReactComponent as DownloadSvg } from "../../assets/svg/download.svg";
 import useOnClickOutside from "../../hooks/useOnClickOutside";
+import { ColorModeContext, tokens } from "../../themes";
 import DropDownMenu from "../dropDownMenu";
+
+
 
 import styles from "./style.module.scss";
 
@@ -15,8 +23,19 @@ const Header = () => {
 
   useOnClickOutside(dropDownMenu, () => setIsDropDownOpen(false));
 
+  const theme = useTheme();
+  const colors = tokens(theme.palette.mode);
+  const colormode = useContext(ColorModeContext);
+
   return (
     <header className={styles.topBar}>
+         <IconButton onClick={colormode.toggleColorMode}>
+          {theme.palette.mode === "dark" ? (
+            <DarkModeOutlinedIcon />
+          ) : (
+            <LightModeOutlinedIcon />
+          )}
+        </IconButton>
       <span className={styles.topBar__download}>
         <NavLink className={styles.topBar__btn} to={"https://app.hubstaff.com/download"}>
           {<DownloadSvg />}

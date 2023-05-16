@@ -96,4 +96,13 @@
       outline-offset: rem(2);
     }
   }
+  &__select{
+    padding: 5px 20px;
+    font-size: 12px;
+    line-height: 1.5;
+    border-radius: 4px;
+    color: #3e4956;
+    background-color: #fff;
+    border-color: #e4e9ef;  
+  }
 }

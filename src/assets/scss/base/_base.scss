@@ -36,6 +36,18 @@ body {
   font-family: var(--family);
   font-size: var(--fs-16);
   @extend %fw-400;
+
+  &[data-theme = "light"] {
+    @each $name, $value in var.$lightTheme {
+      --#{$name}: #{$value};
+    }
+  }
+
+  &[data-theme = "dark"] {
+    @each $name, $value in var.$darkTheme {
+      --#{$name}: #{$value};
+    }
+  }
 }
 
 input,

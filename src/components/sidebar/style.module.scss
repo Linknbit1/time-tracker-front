@@ -5,7 +5,7 @@
   display: grid;
   @extend %p-relative;
   grid-area: sidebar / 1 / span 2;
-  background: map-get($colors, clr-gray-blue);
+  background: var(--clr-gray-blue);
   border-right: rem(1) solid var(--clr-light-Gray);
   @extend %fw-400;
 
