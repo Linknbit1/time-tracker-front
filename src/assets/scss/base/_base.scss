@@ -9,8 +9,7 @@
     --fs-#{$size}: #{calc($size / 10) + rem};
   }
 
-  @each $name,
-  $value in var.$colors {
+  @each $name, $value in var.$colors {
     --#{$name}: #{$value};
   }
 }
@@ -21,7 +20,7 @@
   box-sizing: border-box;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
 
 html {
   font-size: 62.5%;
@@ -37,13 +36,13 @@ body {
   font-size: var(--fs-16);
   @extend %fw-400;
 
-  &[data-theme = "light"] {
+  &[data-theme="light"] {
     @each $name, $value in var.$lightTheme {
       --#{$name}: #{$value};
     }
   }
 
-  &[data-theme = "dark"] {
+  &[data-theme="dark"] {
     @each $name, $value in var.$darkTheme {
       --#{$name}: #{$value};
     }
