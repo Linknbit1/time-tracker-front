@@ -1,0 +1,35 @@
+@use "../../app/import.scss" as *;
+
+.details {
+  // border: 2px solid red;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  column-gap: rem(5);
+  &__img {
+    // border: 5px solid blue;
+    @include square(35);
+    margin: rem(5);
+    border-radius: 50%;
+    // text-align: center;
+    vertical-align: middle;
+    font-weight: 700;
+    color: #fff;
+    background-color: #7b0e09;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &__text {
+    // border: 5px solid gray;
+    h4 {
+      color: #2b343f;
+      font-weight: 600;
+    }
+    p {
+      font-size: rem(10);
+      font-weight: 500;
+      color: #79899d;
+    }
+  }
+}

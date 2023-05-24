@@ -1,96 +1,74 @@
-import classnames from "classnames";
-import React, { useEffect, useRef, useState } from "react";
+import { Box, useTheme } from "@mui/material";
+import { DataGrid, GridColDef } from "@mui/x-data-grid";
+import React from "react";
 
-import styles from "./style.module.scss";
+import { tokens } from "../../themes";
 
-type Option = {
-  label: string;
-  value: string;
-};
-interface TableColumn {
-  name: string | any;
-  span?: string;
-  selector: (row: any) => any;
-  cell?: (row: any) => any;
-  title?: boolean;
-  options?: Option[];
+interface Data {
+  id: number;
+  project: string;
+  activity: string;
+  idle: string;
+  manual: string;
+  duration: string;
+  time: string;
+  actions?: string;
 }
 
-interface TableProps {
-  columns: TableColumn[];
-  data: {
-    project: string;
-    Activity: string;
-    Idle: string;
-    Manual: string;
-    Duration: string;
-    Time: string;
-    Actions?: string;
-    estimated?: string;
-  }[];
-  limit?: number;
+interface Props {
+  columns: GridColDef[];
+  data: Data[];
 }
-
-function Table({ columns, data, limit }: TableProps) {
-  const row = useRef<HTMLTableRowElement>(null);
-  const [height, setHeight] = useState();
-
-  const col = columns.filter((obj, index, self) => index === self.findIndex(o => o.name === obj.name));
-
-  console.log(col);
+const Table = ({ data, columns }: Props) => {
+  const theme = useTheme();
+  const colors = tokens(theme.palette.mode);
+  const getRowHeight = () => 80;
 
   return (
-    <div className={styles.table__container}>
-      <table className={styles.table}>
-        <colgroup>{col.map((column, i) => (column.span ? <col key={i} width={column.span} /> : null))}</colgroup>
-        <thead className={styles.table__head}>
-          <tr>
-            {col.map((column, i) => (
-              <th key={i} className={styles.table__th}>
-                {column && column.name}
-              </th>
-            ))}
-          </tr>
-        </thead>
-        <tbody className={styles.table__body}>
-          {data.map((val, id) => (
-            <tr ref={row as React.LegacyRef<HTMLTableRowElement>} key={id} className={styles.table__tr}>
-              {col.map((column, i) => (
-                <td
-                  //   ref={el => {
-                  //     if (el && column.span) {
-                  //       const width = (parseFloat(column.span) / 100) * el.parentElement.parentElement.parentElement.offsetWidth;
-                  //       el.style.setProperty("--col-width", `${width}px`);
-                  //     }
-                  //   }}
-                  //   rowSpan="1"
-                  //   colSpan="1"
-                  //   key={i}
-                  className={classnames(
-                    styles.table__td
-                    //  column.cell ? ` ${styles.table__action}` : ""
-                  )}
-                >
-                  <div className={styles.table__cell} title={column.title ? column.selector(val) : ""}>
-                    {column.selector(val)}
-                    {column.options && (
-                      <select className={styles.table__select}>
-                        {column.options.map(option => (
-                          <option key={option.value} value={option.value}>
-                            {option.label}
-                          </option>
-                        ))}
-                      </select>
-                    )}
-                  </div>
-                </td>
-              ))}
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+    <Box
+      height="60vh"
+      sx={{
+        "& .MuiDataGrid-root": {
+          border: "none"
+        },
+        "& .MuiDataGrid-cell": {
+          borderBottom: "none"
+        },
+        // "& .name-column--cell": {},
+        "& .MuiDataGrid-columnHeaders": {
+          // backgroundColor: colors.blueAccent[700],
+          borderBottom: "1px solid #e4e9ef",
+          color: "#2b343f"
+        },
+        "& .MuiDataGrid-columnHeaderTitle": {
+          fontWeight: "bold"
+        },
+        "& .MuiDataGrid-virtualScroller": {
+          // backgroundColor: colors.primary[400]
+        },
+        "&. .name-column--cell": {
+          textAlign: "center"
+        },
+        "& .MuiDataGrid-footerContainer": {
+          borderTop: "none"
+          // backgroundColor: colors.blueAccent[700]
+        },
+        "& .MuiCheckbox-root": {
+          color: `${colors.greenAccent[200]} !important`
+        }
+      }}
+    >
+      <DataGrid
+        sx={{ fontSize: "14px" }}
+        rows={data}
+        columns={columns}
+        disableRowSelectionOnClick
+        getRowHeight={getRowHeight}
+        hideFooter
+        checkboxSelection
+      />
+    </Box>
   );
-}
+};
 
 export default Table;
