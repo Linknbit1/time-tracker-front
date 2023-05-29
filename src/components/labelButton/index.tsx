@@ -10,9 +10,10 @@ export default function IconLabelButtons() {
         sx={{
           backgroundColor: "white",
           color: "#3e4956",
-          fontSize: "12px",
+          fontSize: "10px",
           border: "1px solid #a3a8ad",
           boxShadow: "none",
+          fontWeight: "bold",
           "&:hover": {
             backgroundColor: "white", // Override hover background color
             boxShadow: "none", // Remove hover box shadow,

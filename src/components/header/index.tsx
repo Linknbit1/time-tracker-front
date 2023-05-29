@@ -28,7 +28,7 @@ const Header = () => {
   return (
     <header className={styles.topBar}>
       <IconButton onClick={colormode.toggleColorMode}>
-        {theme.palette.mode === "dark" ? <DarkModeOutlinedIcon /> : <LightModeOutlinedIcon />}
+        {theme.palette.mode === "light" ? <DarkModeOutlinedIcon /> : <LightModeOutlinedIcon />}
       </IconButton>
       <span className={styles.topBar__download}>
         <NavLink className={styles.topBar__btn} to={"https://app.hubstaff.com/download"}>

@@ -5,13 +5,17 @@ import Box from "@mui/material/Box";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
+// import TextField from "@mui/material/TextField";
 import Tooltip from "@mui/material/Tooltip";
 import * as React from "react";
 
+import FormDialog from "../dailog";
 import IconLabelButtons from "../labelButton";
 
 function DropDownMenu() {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const [toggle, setToggle] = React.useState<boolean>(false);
+
   const open = Boolean(anchorEl);
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -66,19 +70,26 @@ function DropDownMenu() {
         transformOrigin={{ horizontal: "right", vertical: "top" }}
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
-        <MenuItem onClick={handleClose} sx={{ fontSize: "12px" }}>
-          <ListItemIcon>
+        <MenuItem
+          sx={{ fontSize: "12px" }}
+          onClick={() => {
+            setToggle(prev => !prev);
+          }}
+        >
+          <ListItemIcon sx={{ minWidth: "26px !important" }}>
             <DriveFileRenameOutlineIcon fontSize="large" />
           </ListItemIcon>
           Edit time entry
         </MenuItem>
         <MenuItem onClick={handleClose} sx={{ fontSize: "12px" }}>
-          <ListItemIcon>
+          <ListItemIcon sx={{ minWidth: "24px !important" }}>
             <DeleteForeverIcon fontSize="large" />
           </ListItemIcon>
           Delete time entry
         </MenuItem>
       </Menu>
+
+      <FormDialog toggle={toggle} setToggle={setToggle} />
     </React.Fragment>
   );
 }

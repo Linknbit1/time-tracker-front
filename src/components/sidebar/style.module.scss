@@ -5,7 +5,7 @@
   display: grid;
   @extend %p-relative;
   grid-area: sidebar / 1 / span 2;
-  background: var(--clr-gray-blue);
+  background: var(--grey-100);
   border-right: rem(1) solid var(--clr-light-Gray);
   @extend %fw-400;
 
@@ -32,8 +32,8 @@
     width: rem(24);
     height: rem(24);
     @include flex(center, center);
-    background-color: var(--clr-white);
-    border: rem(1) solid var(--clr-light-Gray);
+    background-color: var(--primary-400);
+    border: rem(1) solid var(--grey-700);
     border-radius: 50%;
     @extend %pointer;
     @extend %transition;
