@@ -1,6 +1,5 @@
 import CloseIcon from "@mui/icons-material/Close";
 import { Avatar, ListItem, ListItemAvatar, ListItemText, Typography } from "@mui/material";
-import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
@@ -9,6 +8,7 @@ import IconButton from "@mui/material/IconButton";
 import { styled } from "@mui/material/styles";
 import * as React from "react";
 
+import CustomButton from "../button";
 import ComboBox from "../comboBox";
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
@@ -90,6 +90,7 @@ export default function CustomizedDialogs({ toggle, setToggle }: props) {
             />
           </ListItem>
           <ComboBox />
+          <input type="date" />
           <Typography gutterBottom>
             Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
             consectetur ac, vestibulum at eros.
@@ -103,9 +104,8 @@ export default function CustomizedDialogs({ toggle, setToggle }: props) {
           </Typography>
         </DialogContent>
         <DialogActions>
-          <Button autoFocus onClick={handleClose}>
-            Save changes
-          </Button>
+          <CustomButton variant={"outlined"} color={"success"} text={"Cancel"} onClick={handleClose} />
+          <CustomButton variant={"contained"} color={"info"} text={"Save"} onClick={handleClose} />
         </DialogActions>
       </BootstrapDialog>
     </div>

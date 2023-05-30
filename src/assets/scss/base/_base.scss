@@ -6,7 +6,7 @@
   --family: #{$family};
 
   @each $size in var.$sizes {
-    --fs-#{$size}: #{calc($size / 10) + rem};
+    --fs-#{$size}: #{calc($size / 16) + rem};
   }
 
   @each $name, $value in var.$colors {

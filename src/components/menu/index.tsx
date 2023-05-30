@@ -71,19 +71,19 @@ function DropDownMenu() {
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
         <MenuItem
-          sx={{ fontSize: "12px" }}
+          // sx={{ fontSize: "12px" }}
           onClick={() => {
             setToggle(prev => !prev);
           }}
         >
-          <ListItemIcon sx={{ minWidth: "26px !important" }}>
-            <DriveFileRenameOutlineIcon fontSize="large" />
+          <ListItemIcon sx={{ minWidth: "24px !important" }}>
+            <DriveFileRenameOutlineIcon fontSize="small" />
           </ListItemIcon>
           Edit time entry
         </MenuItem>
         <MenuItem onClick={handleClose} sx={{ fontSize: "12px" }}>
           <ListItemIcon sx={{ minWidth: "24px !important" }}>
-            <DeleteForeverIcon fontSize="large" />
+            <DeleteForeverIcon fontSize="small" />
           </ListItemIcon>
           Delete time entry
         </MenuItem>
