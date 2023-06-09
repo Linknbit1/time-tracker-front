@@ -11,13 +11,13 @@ export default function IconLabelButtons() {
           backgroundColor: "white",
           color: "#3e4956",
           fontSize: "10px",
-          border: "1px solid #a3a8ad",
           boxShadow: "none",
+          border: "1px solid #e4e9ef",
           fontWeight: "bold",
           "&:hover": {
             backgroundColor: "white", // Override hover background color
-            boxShadow: "none", // Remove hover box shadow,
-            border: "1px solid #c4cfdc"
+            border: "1px solid #a3a8ad",
+            boxShadow: "none" // Remove hover box shadow,
           }
         }}
         variant="contained"

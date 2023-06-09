@@ -4,6 +4,92 @@
   border-radius: rem(12);
   height: rem(36);
   @include flex($direction: column, $align-item: center);
+  &__6am {
+    width: 25%;
+    // border: 2px solid red;
+    height: 100%;
+    position: absolute;
+
+    &::before {
+      content: "";
+      height: 22px;
+      width: 1.5px;
+      position: absolute;
+      left: 100%;
+      transform: translateX(-50%);
+      background-color: var(--clr-light-blue-gray);
+      z-index: 0;
+    }
+
+    &::after {
+      content: "6am";
+      position: absolute;
+      top: 180%; /* Display below the preceding absolute element */
+      left: 100%; /* Center horizontally */
+      transform: translateX(-50%);
+      color: var(--clr-grayish);
+      font-size: 10px;
+      white-space: nowrap;
+    }
+  }
+  &__12pm {
+    width: 25%;
+    // border: 2px solid blue;
+    height: 100%;
+    position: absolute;
+    left: 25%;
+
+    &::before {
+      content: "";
+      height: 22px;
+      width: 1.5px;
+      position: absolute;
+      left: 100%;
+      transform: translateX(-50%);
+      background-color: var(--clr-light-blue-gray);
+      z-index: 0;
+    }
+
+    &::after {
+      content: "12pm";
+      position: absolute;
+      top: 180%; /* Display below the preceding absolute element */
+      left: 100%; /* Center horizontally */
+      transform: translateX(-50%);
+      color: var(--clr-grayish);
+      font-size: 10px;
+      white-space: nowrap;
+    }
+  }
+  &__6pm {
+    width: 25%;
+    // border: 2px solid black;
+    height: 100%;
+    position: absolute;
+    left: 50%;
+
+    &::before {
+      content: "";
+      height: 22px;
+      width: 1.5px;
+      position: absolute;
+      left: 100%;
+      transform: translateX(-50%);
+      background-color: var(--clr-light-blue-gray);
+    }
+
+    &::after {
+      content: "6pm";
+      position: absolute;
+      top: 180%; /* Display below the preceding absolute element */
+      left: 100%; /* Center horizontally */
+      transform: translateX(-50%);
+      color: var(--clr-grayish);
+      font-size: 10px;
+      white-space: nowrap;
+    }
+  }
+
   &__body {
     @extend %d-block;
     height: rem(16);
@@ -42,22 +128,24 @@
     height: 100%;
     background-color: var(--color-time-span);
     border-radius: rem(12);
+    z-index: 99999;
     cursor: pointer;
-    &:hover{
+    &:hover {
       .timeBar__info {
         opacity: 1;
         visibility: visible;
         z-index: 1;
-        transform: translate(-50%,0px)
+        transform: translate(-50%, 0px);
+      }
     }
-  }}
+  }
   &__info {
-    @extend %p-absolute;  
+    @extend %p-absolute;
     border-radius: rem(5);
     background: var(--clr-dark-teal);
     color: var(--clr-white);
     padding: rem(5) rem(10);
-    opacity: 0;   
+    opacity: 0;
     visibility: hidden;
     z-index: 1;
     font-size: rem(12);
@@ -65,7 +153,7 @@
     text-align: center;
     top: 163%;
     left: 50%;
-    transform: translate(-50%,10px);
+    transform: translate(-50%, 10px);
 
     &::before {
       content: "";
@@ -77,11 +165,9 @@
       margin: auto;
       top: calc(0% + rem(-6));
       @extend %overflow-visible;
-
     }
   }
-  &__time{
+  &__time {
     white-space: pre;
   }
-  
-} 
+}

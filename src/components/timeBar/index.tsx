@@ -52,6 +52,9 @@ const TimeBar = ({ setActivityTotal }: { setActivityTotal: (newTotal: string) =>
       style={{ "--future-inset": `${timePercentage}%`, "--future-width": `${100 - timePercentage}%` } as CustomCSSProperties}
     >
       <div className={styles.timeBar__body}>
+        <span className={styles.timeBar__6am}></span>
+        <span className={styles.timeBar__12pm}></span>
+        <span className={styles.timeBar__6pm}></span>
         <div className={styles.timeBar__futureBar}></div>
         {timeSlotsInSeconds.map((timeSlotsInSecond, id) => {
           return (

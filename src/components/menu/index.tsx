@@ -5,14 +5,13 @@ import Box from "@mui/material/Box";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-// import TextField from "@mui/material/TextField";
 import Tooltip from "@mui/material/Tooltip";
 import * as React from "react";
 
 import FormDialog from "../dailog";
 import IconLabelButtons from "../labelButton";
 
-function DropDownMenu() {
+function DropDownMenu({ setActivityTotal }: { setActivityTotal: (newTotal: string) => void }) {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [toggle, setToggle] = React.useState<boolean>(false);
 
@@ -89,7 +88,7 @@ function DropDownMenu() {
         </MenuItem>
       </Menu>
 
-      <FormDialog toggle={toggle} setToggle={setToggle} />
+      <FormDialog toggle={toggle} setToggle={setToggle} setActivityTotal={setActivityTotal} />
     </React.Fragment>
   );
 }

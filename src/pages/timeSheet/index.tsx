@@ -60,7 +60,7 @@ const TimeSheet = () => {
       width: 190,
 
       cellClassName: "name-column--cell",
-      renderCell: () => <DropDownMenu />
+      renderCell: () => <DropDownMenu setActivityTotal={setActivityTotal} />
     }
   ];
 
