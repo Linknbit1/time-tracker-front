@@ -6,7 +6,7 @@ import { tokens } from "../../themes";
 
 interface Data {
   id: number;
-  project: string;
+  projectName: string;
   activity: string;
   idle: string;
   manual: string;

@@ -1,7 +1,7 @@
 import { CSSProperties } from "react";
 import React from "react";
 
-import timeSlots from "../timeData";
+import detail from "../../pages/timeSheet/tableData";
 
 import styles from "./style.module.scss";
 
@@ -17,7 +17,7 @@ const TimeBar = ({ setActivityTotal }: { setActivityTotal: (newTotal: string) =>
   beginningOfDay.setHours(0, 0, 0, 0);
   const timePercentage = (Math.floor((new Date().getTime() - beginningOfDay.getTime()) / 1000) / daySeconds) * 100;
 
-  const timeSlotsInSeconds = timeSlots.map(timeSlot => {
+  const timeSlotsInSeconds = detail.map(timeSlot => {
     const startTime = timeSlot.startTime;
     const endTime = timeSlot.endTime;
     const secondsToStart = Math.floor(((startTime - beginningOfDay.getTime()) / 1000 / daySeconds) * 100);

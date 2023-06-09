@@ -4,9 +4,10 @@
   border-radius: rem(12);
   height: rem(36);
   @include flex($direction: column, $align-item: center);
+  margin-bottom: rem(30);
   &__6am {
     width: 25%;
-    // border: 2px solid red;
+
     height: 100%;
     position: absolute;
 
@@ -63,7 +64,6 @@
   }
   &__6pm {
     width: 25%;
-    // border: 2px solid black;
     height: 100%;
     position: absolute;
     left: 50%;
@@ -128,7 +128,7 @@
     height: 100%;
     background-color: var(--color-time-span);
     border-radius: rem(12);
-    z-index: 99999;
+    z-index: 9;
     cursor: pointer;
     &:hover {
       .timeBar__info {
