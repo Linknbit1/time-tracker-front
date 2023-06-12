@@ -117,7 +117,7 @@ const TimeSheet = () => {
   return (
     <div>
       <Heading>View & edit timesheets</Heading>
-      <TimeToday activityTotal={activityTotal} />
+      <TimeToday activityTotal={activityTotal} setActivityTotal={setActivityTotal} />
       <TimeBar setActivityTotal={setActivityTotal} />
       <Table columns={columns} data={detail} />
     </div>

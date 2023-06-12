@@ -8,7 +8,7 @@ import MenuItem from "@mui/material/MenuItem";
 import Tooltip from "@mui/material/Tooltip";
 import * as React from "react";
 
-import FormDialog from "../dailog";
+import EditTimeDialog from "../editDialog";
 import IconLabelButtons from "../labelButton";
 
 function DropDownMenu({ setActivityTotal }: { setActivityTotal: (newTotal: string) => void }) {
@@ -88,7 +88,7 @@ function DropDownMenu({ setActivityTotal }: { setActivityTotal: (newTotal: strin
         </MenuItem>
       </Menu>
 
-      <FormDialog toggle={toggle} setToggle={setToggle} setActivityTotal={setActivityTotal} />
+      <EditTimeDialog toggle={toggle} setToggle={setToggle} setActivityTotal={setActivityTotal} />
     </React.Fragment>
   );
 }
