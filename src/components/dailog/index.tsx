@@ -134,18 +134,28 @@ export default function CustomizedDialogs({ toggle, setToggle, setActivityTotal 
             </DemoContainer>
           </LocalizationProvider>
           <TimeBar setActivityTotal={setActivityTotal} />
-          <div>
-            <FormControl sx={{ minWidth: 540, mt: 5, mb: 5 }} required variant="outlined" hiddenLabel>
-              <InputLabel id="demo-controlled-open-select-label" variant="outlined">
-                REASON
-              </InputLabel>
-              <Select labelId="demo-controlled-open-select-label" id="demo-controlled-open-select" label="Age">
-                <MenuItem value={10}>Ten</MenuItem>
-                <MenuItem value={20}>Twenty</MenuItem>
-                <MenuItem value={30}>Thirty</MenuItem>
-              </Select>
-            </FormControl>
-          </div>
+
+          <FormControl sx={{ minWidth: 540, mt: 5, mb: 5 }} required variant="outlined" hiddenLabel>
+            <InputLabel
+              id="demo-controlled-open-select-label"
+              variant="outlined"
+              // sx={{
+              //   border: "2px solid red",
+              //   mr: "20px",
+              //   "& .MuiInputLabel-root": {
+              //     border: "2px solid red",
+              //     fontSize: "20px"
+              //   }
+              // }}
+            >
+              REASON
+            </InputLabel>
+            <Select labelId="demo-controlled-open-select-label" id="demo-controlled-open-select" label="Reason">
+              <MenuItem value={10}>Ten</MenuItem>
+              <MenuItem value={20}>Twenty</MenuItem>
+              <MenuItem value={30}>Thirty</MenuItem>
+            </Select>
+          </FormControl>
         </DialogContent>
         <DialogActions>
           <Button
