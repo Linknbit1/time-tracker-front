@@ -1,8 +1,6 @@
 import { Box, Button } from "@mui/material";
-import FormControl from "@mui/material/FormControl";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import Select, { SelectChangeEvent } from "@mui/material/Select";
+import Autocomplete from "@mui/material/Autocomplete";
+import TextField from "@mui/material/TextField";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
@@ -22,11 +20,6 @@ type timeTodayProps = {
 };
 const TimeToday = ({ activityTotal, setActivityTotal }: timeTodayProps) => {
   const [toggle, setToggle] = React.useState<boolean>(false);
-  const [age, setAge] = React.useState("");
-
-  const handleChange = (event: SelectChangeEvent) => {
-    setAge(event.target.value as string);
-  };
 
   return (
     <>
@@ -37,11 +30,22 @@ const TimeToday = ({ activityTotal, setActivityTotal }: timeTodayProps) => {
               components={["SingleInputDateRangeField"]}
               sx={{
                 "& .MuiFormControl-root": {
-                  minWidth: "200px !important"
+                  minWidth: "250px !important"
+                },
+                "& .MuiOutlinedInput-input": {
+                  height: "7px"
                 }
               }}
             >
-              <DateRangePicker slots={{ field: SingleInputDateRangeField }} formatDensity="spacious" />
+              <DateRangePicker
+                slots={{ field: SingleInputDateRangeField }}
+                formatDensity="spacious"
+                sx={{
+                  "& .MuiDateRangeCalendar-root > div:first-child": {
+                    border: "2px solid red !important"
+                  }
+                }}
+              />
             </DemoContainer>
           </LocalizationProvider>
           <h4>
@@ -49,15 +53,15 @@ const TimeToday = ({ activityTotal, setActivityTotal }: timeTodayProps) => {
           </h4>
         </div>
         <div>
-          <Box sx={{ mb: 2, minWidth: "150px" }}>
-            <FormControl fullWidth>
-              <InputLabel id="demo-simple-select-label">Member </InputLabel>
-              <Select labelId="demo-simple-select-label" id="demo-simple-select" value={age} label="Member " onChange={handleChange}>
-                <MenuItem value="Zain">Zain</MenuItem>
-                <MenuItem value="Asif">Asif</MenuItem>
-                <MenuItem value="Ghayas">Ghayas</MenuItem>
-              </Select>
-            </FormControl>
+          <Box sx={{ mb: 2 }}>
+            <Autocomplete
+              disablePortal
+              id="combo-box-demo"
+              options={members}
+              sx={{ width: 150 }}
+              size="small"
+              renderInput={params => <TextField {...params} label="Member" required />}
+            />
           </Box>
 
           <Button
@@ -87,3 +91,12 @@ const TimeToday = ({ activityTotal, setActivityTotal }: timeTodayProps) => {
 };
 
 export default TimeToday;
+const members = [
+  { label: "Zain" },
+  { label: "Asif" },
+  { label: "Ghayas" },
+  { label: "Asfand" },
+  { label: "Saif Ullah" },
+  { label: "Faizan" },
+  { label: "Muneeb" }
+];

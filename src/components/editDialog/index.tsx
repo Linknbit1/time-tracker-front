@@ -22,6 +22,7 @@ import { styled } from "@mui/material/styles";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
 import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers-pro";
+import { MultiInputTimeRangeField } from "@mui/x-date-pickers-pro/MultiInputTimeRangeField";
 import * as React from "react";
 
 import TimeBar from "../timeBar";
@@ -103,7 +104,7 @@ export default function EditTimeDialog({ toggle, setToggle, setActivityTotal }: 
         Edit time
       </BootstrapDialogTitle>
       <DialogContent>
-        <ListItem sx={{ p: 0, mb: 3, mt: 3 }}>
+        <ListItem sx={{ p: 0, mb: 3, mt: 5 }}>
           <ListItemAvatar>
             <Avatar src="https:nativuspeople.com/wp-content/uploads/2023/02/Zain-Imam.jpg" />
           </ListItemAvatar>
@@ -120,31 +121,27 @@ export default function EditTimeDialog({ toggle, setToggle, setActivityTotal }: 
           id="combo-box-demo"
           options={top100Films}
           sx={{ width: 540 }}
-          renderInput={params => <TextField {...params} label="PROJECT" size="medium" placeholder="Projects" required maxRows="2" />}
+          renderInput={params => <TextField {...params} label="PROJECT" size="small" placeholder="Projects" required maxRows="2" />}
         />
         <LocalizationProvider dateAdapter={AdapterDayjs}>
-          <DemoContainer components={["DatePicker"]} sx={{ mt: 2, mb: 4 }}>
+          <DemoContainer components={["DatePicker"]} sx={{ mt: 4, mb: 6 }}>
             <DatePicker label="TIME SPAN (PKT)*" />
+            <MultiInputTimeRangeField
+              slotProps={{
+                textField: ({ position }) => ({
+                  label: position === "start" ? "From" : "To"
+                })
+              }}
+            />
           </DemoContainer>
         </LocalizationProvider>
         <TimeBar setActivityTotal={setActivityTotal} />
 
         <FormControl sx={{ minWidth: 540, mt: 5, mb: 5 }} required variant="outlined" hiddenLabel>
-          <InputLabel
-            id="demo-controlled-open-select-label"
-            variant="outlined"
-            // sx={{
-            //   border: "2px solid red",
-            //   mr: "20px",
-            //   "& .MuiInputLabel-root": {
-            //     border: "2px solid red",
-            //     fontSize: "20px"
-            //   }
-            // }}
-          >
+          <InputLabel id="demo-controlled-open-select-label" variant="outlined" size="small">
             REASON
           </InputLabel>
-          <Select labelId="demo-controlled-open-select-label" id="demo-controlled-open-select" label="Reason">
+          <Select labelId="demo-controlled-open-select-label" id="demo-controlled-open-select" label="Reason" size="small">
             <MenuItem value={10}>Ten</MenuItem>
             <MenuItem value={20}>Twenty</MenuItem>
             <MenuItem value={30}>Thirty</MenuItem>
@@ -187,6 +184,7 @@ export default function EditTimeDialog({ toggle, setToggle, setActivityTotal }: 
     </BootstrapDialog>
   );
 }
+
 const top100Films = [
   {
     label: "Tailor App"
