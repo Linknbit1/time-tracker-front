@@ -34,19 +34,6 @@ const Header = () => {
       <IconButton onClick={colormode.toggleColorMode}>
         {theme.palette.mode === "light" ? <DarkModeOutlinedIcon /> : <LightModeOutlinedIcon />}
       </IconButton>
-      {/* <div className={styles.topBar__images}>
-        <div className={styles.topBar__profile} ref={dropDownMenu}>
-          <div onClick={() => setIsDropDownOpen(prev => !prev)}>
-            <img src="https://hubstaff-account.s3.amazonaws.com/avatars/97d27ee4e05f99fb857ddb8644a81289.jpg" />
-          </div>
-          <div className={classNames(styles.topBar__dropDown, { [styles["topBar__dropDown--open"]]: isDropDownOpen })}>
-            <DropDownMenu />
-          </div>
-        </div>
-        <div>
-          <img src="https://hubstaff-production.s3.amazonaws.com/organization/logos/57ec6bd7791a33a356f009fb37d08320.png" />
-        </div>
-      </div> */}
       <Box sx={{ display: "flex", alignItems: "center", textAlign: "center" }}>
         <Tooltip title="Profile">
           <IconButton
@@ -61,10 +48,12 @@ const Header = () => {
           </IconButton>
         </Tooltip>
         <div style={{ border: "1px solid #ddd", height: "25px", margin: "0 8px " }}></div>
-        <Avatar
-          sx={{ width: 24, height: 24 }}
-          src="https://hubstaff-production.s3.amazonaws.com/organization/logos/57ec6bd7791a33a356f009fb37d08320.png"
-        />
+        <Tooltip title="Organization">
+          <Avatar
+            sx={{ width: 24, height: 24 }}
+            src="https://hubstaff-production.s3.amazonaws.com/organization/logos/57ec6bd7791a33a356f009fb37d08320.png"
+          />
+        </Tooltip>
       </Box>
       <Menu
         anchorEl={anchorEl}

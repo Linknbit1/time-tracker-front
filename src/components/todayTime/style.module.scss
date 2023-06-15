@@ -2,16 +2,26 @@
 
 .time {
   font-size: 18px;
-  margin: rem(25) 0 rem(40) 0;
+  margin: rem(90) 0 rem(5) 0;
   @include flex($justify-content: space-between, $align-item: center);
+  // border: 2px solid red;
+
   h4 {
     font-weight: 600;
     line-height: 1.4;
     color: #2b343f;
-    margin-left: rem(3);
+    margin-left: rem(5);
   }
   &__field {
-    @include flex($direction: column, $gap: rem(20));
+    // @include flex($direction: column);
     margin-left: rem(15);
+    // border: 2px solid red;
+    height: 100%;
+    position: relative;
+    float: bottom;
+  }
+  &__dateRange {
+    position: absolute;
+    top: -100px;
   }
 }

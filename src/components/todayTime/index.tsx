@@ -1,15 +1,9 @@
 import { Box, Button } from "@mui/material";
 import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { DateRangePicker } from "@mui/x-date-pickers-pro/DateRangePicker";
-import { SingleInputDateRangeField } from "@mui/x-date-pickers-pro/SingleInputDateRangeField";
 import React from "react";
 
-// import AddTimeDialog from "../addDialog";
-
+import DateRangePicker from "../../components/calendar/dateRangePicker";
 import AddTimeDialog from "../addDialog";
 
 import styles from "./style.module.scss";
@@ -25,29 +19,9 @@ const TimeToday = ({ activityTotal, setActivityTotal }: timeTodayProps) => {
     <>
       <div className={styles.time}>
         <div className={styles.time__field}>
-          <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <DemoContainer
-              components={["SingleInputDateRangeField"]}
-              sx={{
-                "& .MuiFormControl-root": {
-                  minWidth: "250px !important"
-                },
-                "& .MuiOutlinedInput-input": {
-                  height: "7px"
-                }
-              }}
-            >
-              <DateRangePicker
-                slots={{ field: SingleInputDateRangeField }}
-                formatDensity="spacious"
-                sx={{
-                  "& .MuiDateRangeCalendar-root > div:first-child": {
-                    border: "2px solid red !important"
-                  }
-                }}
-              />
-            </DemoContainer>
-          </LocalizationProvider>
+          <div className={styles.time__dateRange}>
+            <DateRangePicker />
+          </div>
           <h4>
             Today: <span>{activityTotal}</span>
           </h4>
@@ -77,7 +51,8 @@ const TimeToday = ({ activityTotal, setActivityTotal }: timeTodayProps) => {
               borderRadius: "6px",
               textTransform: "none",
               float: "right",
-              mr: 0.5
+              mr: 0.5,
+              mb: 1.5
             }}
             variant={"contained"}
           >
@@ -100,3 +75,28 @@ const members = [
   { label: "Faizan" },
   { label: "Muneeb" }
 ];
+
+{
+  /* <LocalizationProvider dateAdapter={AdapterDayjs}>
+<DemoContainer
+  components={["SingleInputDateRangeField"]}
+  sx={{
+    "& .MuiFormControl-root": {
+      minWidth: "250px !important"
+    },
+    "& .MuiOutlinedInput-input": {
+      height: "7px"
+    }
+  }}
+>
+  <DateRangePicker
+    slots={{ field: SingleInputDateRangeField }}
+    formatDensity="spacious"
+    sx={{
+      "& .MuiPickersPopper-root": {
+        border: "8px solid red !important"
+      }
+    }}
+  />
+  {/* <div style={{ position: "absolute" }}>zain</div> */
+}

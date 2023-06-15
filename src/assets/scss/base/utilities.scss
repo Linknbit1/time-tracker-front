@@ -1,3 +1,82 @@
 .MuiDateRangeCalendar-root > div:first-child {
   display: none;
 }
+.MuiDateRangeCalendar-root {
+  border: 2px solid red !important;
+}
+.rdrDateDisplayWrapper {
+  height: 58.8px;
+}
+.rdrDateDisplayItem {
+  background-color: #2aa7ff;
+  border-radius: 0;
+  padding: 12px 9px;
+}
+.rdrDateDisplayItem input {
+  color: #fff;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.rdrDateDisplay {
+  margin: 0 !important;
+}
+.rdrDateInput + .rdrDateDisplayItem {
+  margin-left: 2px !important;
+}
+.rdrMonthName {
+  color: #2aa7ff;
+}
+.rdrWeekDay {
+  color: #2aa7ff;
+}
+.rdrMonthAndYearPickers select {
+  color: #2aa7ff;
+}
+.rdrStaticRangeLabel {
+  font-weight: 500;
+  color: #3e4956;
+  background-color: #fff;
+  // border-color: #e4e9ef;
+  border: 1px solid #e4e9ef;
+  margin: 10px 10px;
+  font-size: 12px;
+  line-height: 1.5;
+  border-radius: 4px;
+  text-align: left;
+  padding: 5px 8px !important;
+}
+.rdrStaticRangeLabel:focus {
+  color: #fff;
+  background-color: #2aa7ff !important;
+  border-color: #119cff !important;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  font-weight: 500;
+}
+// .rdrStaticRangeSelected {
+//   border: 2px solid red;
+//   background-color: #2aa7ff !important;
+//   border-color: #119cff !important;
+// }
+
+// active
+// color: #fff;
+//     background-color: #2aa7ff;
+//     border-color: #119cff;
+//     -webkit-box-shadow: none;
+//     box-shadow: none;
+// color: #fff; */
+//     background-color: #0090f6;
+//     background-image: none;
+//     border-color: #007bd2;
+// font-weight: 500;
+// color: #3e4956;
+// background-color: #fff;
+// border-color: #e4e9ef;
+// padding: 5px 10px;
+// font-size: 12px;
+// line-height: 1.5;
+// border-radius: 4px;
+// margin: 0 0 10px;
+// text-align: left;

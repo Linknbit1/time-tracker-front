@@ -1,0 +1,24 @@
+.calenderWrap {
+  display: inline-block;
+  position: relative;
+}
+.calendarElement {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 10px;
+  border: 1px solid #ccc;
+  z-index: 999;
+}
+.calenderWrap > button {
+  // display: none;
+  border: 1px solid #e4e9ef !important;
+  width: 310px;
+  padding: 8px 0 !important;
+  font-size: 13px;
+  color: #3e4956;
+  &:hover {
+    background-color: #fff;
+    border: 1px solid #c2c7cc !important;
+  }
+}
