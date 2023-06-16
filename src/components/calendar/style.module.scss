@@ -17,6 +17,8 @@
   padding: 8px 0 !important;
   font-size: 13px;
   color: #3e4956;
+  // pointer-events: none;
+  border: 2px solid red;
   &:hover {
     background-color: #fff;
     border: 1px solid #c2c7cc !important;
