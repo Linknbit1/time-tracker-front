@@ -25,7 +25,7 @@ import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers-pro";
 import { MultiInputTimeRangeField } from "@mui/x-date-pickers-pro/MultiInputTimeRangeField";
 import * as React from "react";
 
-import TimeBar from "../timeBar";
+import TimeBar from "../../timeBar";
 
 const BootstrapDialog = styled(Dialog)(() => ({
   "& .MuiDialogContent-root": {
@@ -78,13 +78,13 @@ function BootstrapDialogTitle(props: DialogTitleProps) {
   );
 }
 
-interface AddTimeDialogProps {
+interface Props {
   toggle: boolean;
   setToggle: (value: boolean) => void;
   setActivityTotal: (newTotal: string) => void;
 }
 
-export default function AddTimeDialog({ toggle, setToggle, setActivityTotal }: AddTimeDialogProps) {
+export default function EditTimeDialog({ toggle, setToggle, setActivityTotal }: Props) {
   const handleClose = () => {
     setToggle(false);
   };
@@ -184,6 +184,7 @@ export default function AddTimeDialog({ toggle, setToggle, setActivityTotal }: A
     </BootstrapDialog>
   );
 }
+
 const top100Films = [
   {
     label: "Tailor App"

@@ -1,3 +1,4 @@
+import AltRouteIcon from "@mui/icons-material/AltRoute";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import DriveFileRenameOutlineIcon from "@mui/icons-material/DriveFileRenameOutline";
 import { Typography } from "@mui/material";
@@ -8,12 +9,14 @@ import MenuItem from "@mui/material/MenuItem";
 import Tooltip from "@mui/material/Tooltip";
 import * as React from "react";
 
-import EditTimeDialog from "../editDialog";
+import EditTimeDialog from "../dialogs/editDialog";
+import SplitTimeDialog from "../dialogs/splitDialog";
 import IconLabelButtons from "../labelButton";
 
 function DropDownMenu({ setActivityTotal }: { setActivityTotal: (newTotal: string) => void }) {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [toggle, setToggle] = React.useState<boolean>(false);
+  const [splitDialogToggle, setSplitDialogToggle] = React.useState<boolean>(false);
 
   const open = Boolean(anchorEl);
 
@@ -24,6 +27,7 @@ function DropDownMenu({ setActivityTotal }: { setActivityTotal: (newTotal: strin
   const handleClose = () => {
     setAnchorEl(null);
   };
+  console.log(splitDialogToggle);
 
   return (
     <React.Fragment>
@@ -80,7 +84,18 @@ function DropDownMenu({ setActivityTotal }: { setActivityTotal: (newTotal: strin
           </ListItemIcon>
           Edit time entry
         </MenuItem>
-        <MenuItem onClick={handleClose} sx={{ fontSize: "12px" }}>
+        <MenuItem
+          onClick={() => {
+            setSplitDialogToggle(prev => !prev);
+          }}
+          sx={{ fontSize: "12px" }}
+        >
+          <ListItemIcon sx={{ minWidth: "24px !important" }}>
+            <AltRouteIcon fontSize="small" />
+          </ListItemIcon>
+          Split time entry
+        </MenuItem>
+        <MenuItem sx={{ fontSize: "12px" }}>
           <ListItemIcon sx={{ minWidth: "24px !important" }}>
             <DeleteForeverIcon fontSize="small" />
           </ListItemIcon>
@@ -89,6 +104,7 @@ function DropDownMenu({ setActivityTotal }: { setActivityTotal: (newTotal: strin
       </Menu>
 
       <EditTimeDialog toggle={toggle} setToggle={setToggle} setActivityTotal={setActivityTotal} />
+      <SplitTimeDialog splitDialogToggle={splitDialogToggle} setSplitDialogToggle={setSplitDialogToggle} setActivityTotal={setActivityTotal} />
     </React.Fragment>
   );
 }

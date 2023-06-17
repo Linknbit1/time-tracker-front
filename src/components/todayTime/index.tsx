@@ -4,7 +4,7 @@ import TextField from "@mui/material/TextField";
 import React from "react";
 
 import DateRangePicker from "../../components/calendar/dateRangePicker";
-import AddTimeDialog from "../addDialog";
+import AddTimeDialog from "../dialogs/addDialog";
 
 import styles from "./style.module.scss";
 

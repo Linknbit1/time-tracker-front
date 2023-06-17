@@ -60,3 +60,12 @@
 .rdrStaticRange span {
   pointer-events: auto;
 }
+.css-3dhyfe-MuiTabs-indicator {
+  background-color: #2aa7ff !important;
+  width: 20% !important;
+  transform: translateX(60%);
+}
+
+.MuiButtonBase-root.MuiTab-root.Mui-selected {
+  color: #2aa7ff !important;
+}
