@@ -27,7 +27,6 @@ function DropDownMenu({ setActivityTotal }: { setActivityTotal: (newTotal: strin
   const handleClose = () => {
     setAnchorEl(null);
   };
-  console.log(splitDialogToggle);
 
   return (
     <React.Fragment>

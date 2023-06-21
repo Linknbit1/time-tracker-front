@@ -1,12 +1,7 @@
 .MuiDateRangeCalendar-root > div:first-child {
   display: none;
 }
-.MuiDateRangeCalendar-root {
-  border: 2px solid red !important;
-}
-.rdrDateDisplayWrapper {
-  height: 58.8px;
-}
+
 .rdrDateDisplayItem {
   background-color: #2aa7ff;
   border-radius: 0;
@@ -37,7 +32,6 @@
   font-weight: 500;
   color: #3e4956;
   background-color: #fff;
-  // border-color: #e4e9ef;
   border: 1px solid #e4e9ef;
   margin: 10px 10px;
   font-size: 12px;
@@ -62,10 +56,13 @@
 }
 .css-3dhyfe-MuiTabs-indicator {
   background-color: #2aa7ff !important;
-  width: 20% !important;
-  transform: translateX(60%);
 }
 
 .MuiButtonBase-root.MuiTab-root.Mui-selected {
   color: #2aa7ff !important;
 }
+// .MuiCardMedia-root {
+//   border: 2px solid red;
+//   &:hover {
+//   }
+// }

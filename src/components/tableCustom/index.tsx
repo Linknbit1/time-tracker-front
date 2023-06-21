@@ -37,8 +37,6 @@ function Table({ columns, data, limit }: TableProps) {
 
   const col = columns.filter((obj, index, self) => index === self.findIndex(o => o.name === obj.name));
 
-  console.log(col);
-
   return (
     <div className={styles.table__container}>
       <table className={styles.table}>

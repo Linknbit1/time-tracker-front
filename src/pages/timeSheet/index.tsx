@@ -1,21 +1,26 @@
 import { Typography } from "@mui/material";
+import { Box, Button } from "@mui/material";
+import Autocomplete from "@mui/material/Autocomplete";
 import Avatar from "@mui/material/Avatar";
 import ListItem from "@mui/material/ListItem";
 import ListItemAvatar from "@mui/material/ListItemAvatar";
 import ListItemText from "@mui/material/ListItemText";
+import TextField from "@mui/material/TextField";
 import { GridColDef } from "@mui/x-data-grid";
 import React, { useState } from "react";
 
+import DateRangePicker from "../../components/calendar/dateRangePicker";
+import AddTimeDialog from "../../components/dialogs/addDialog";
 import Heading from "../../components/heading";
 import DropDownMenu from "../../components/menu/index";
 import Table from "../../components/table";
 import TimeBar from "../../components/timeBar";
-import TimeToday from "../../components/todayTime";
 
 import detail from "./tableData";
 
 const TimeSheet = () => {
   const [activityTotal, setActivityTotal] = useState<string>("");
+  const [toggle, setToggle] = React.useState<boolean>(false);
 
   const columns: GridColDef[] = [
     {
@@ -114,12 +119,59 @@ const TimeSheet = () => {
     }
   ];
 
+  const members = [
+    { label: "Zain" },
+    { label: "Asif" },
+    { label: "Ghayas" },
+    { label: "Asfand" },
+    { label: "Saif Ullah" },
+    { label: "Faizan" },
+    { label: "Muneeb" }
+  ];
+
   return (
     <div>
       <Heading>View & edit timesheets</Heading>
-      <TimeToday activityTotal={activityTotal} setActivityTotal={setActivityTotal} />
+      <Box sx={{ display: "flex", justifyContent: "space-between", mt: 2 }}>
+        <DateRangePicker />
+        <Autocomplete
+          disablePortal
+          id="combo-box-demo"
+          options={members}
+          sx={{ width: 150 }}
+          size="small"
+          renderInput={params => <TextField {...params} label="Member" required />}
+        />
+      </Box>
+
+      <Box sx={{ display: "flex", justifyContent: "flex-end", mt: 1 }}>
+        <Button
+          onClick={() => {
+            setToggle(prev => !prev);
+          }}
+          sx={{
+            background: "#2aa7ff",
+            minWidth: "98px",
+            height: "40px",
+            fontSize: "14px",
+            fontWeight: "500",
+            borderRadius: "6px",
+            textTransform: "none"
+          }}
+          variant={"contained"}
+        >
+          Add time
+        </Button>
+      </Box>
+      <Box sx={{ display: "flex", justifyContent: "space-between", m: 2 }}>
+        <Typography variant="h4" component="h2">
+          Today: {activityTotal}
+        </Typography>
+      </Box>
+      {/* <TimeToday activityTotal={activityTotal} setActivityTotal={setActivityTotal} /> */}
       <TimeBar setActivityTotal={setActivityTotal} />
       <Table columns={columns} data={detail} />
+      <AddTimeDialog toggle={toggle} setToggle={setToggle} setActivityTotal={setActivityTotal} />
     </div>
   );
 };

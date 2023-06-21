@@ -1,3 +1,5 @@
+import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
+import Button from "@mui/material/Button";
 import { format } from "date-fns";
 import React, { useEffect, useRef, useState } from "react";
 import { Calendar } from "react-date-range";
@@ -8,19 +10,21 @@ import "react-date-range/dist/styles.css"; // main style file
 import "react-date-range/dist/theme/default.css"; // theme css file
 
 const CalendarComp = () => {
-  const [calendarData, setCalendarData] = useState("");
+  // const [calendarData, setCalendarData] = useState("");
+  const [calendarData, setCalendarData] = useState<Date>(new Date());
   const [open, setOpen] = useState(false);
 
+  // const date = new Date(calendarData);
   const componentRef = useRef<HTMLDivElement>(null);
 
   function handleSelect(date: Date) {
-    setCalendarData(format(date, "MM/dd/yyyy"));
+    const formattedDate = format(date, "MM/dd/yyyy");
+    setCalendarData(new Date(formattedDate));
   }
 
   useEffect(() => {
     document.addEventListener("keydown", hideOnEscape, true);
     document.addEventListener("click", hideOnClickOutside, true);
-    setCalendarData(format(new Date(), "MM/dd/yyyy"));
   }, []);
 
   function hideOnEscape(e: KeyboardEvent) {
@@ -30,8 +34,6 @@ const CalendarComp = () => {
   }
 
   function hideOnClickOutside(e: MouseEvent) {
-    // console.log(componentRef.current);
-    // console.log(e.target);
     if (componentRef.current && !(componentRef.current as Node).contains(e.target as Node)) {
       setOpen(false);
     }
@@ -39,14 +41,18 @@ const CalendarComp = () => {
 
   return (
     <div className={styles.calenderWrap}>
-      <input
-        className={styles.input}
-        value={calendarData}
+      <Button
+        variant="outlined"
+        endIcon={<CalendarMonthIcon sx={{ color: "#2aa7ff", fontSize: "18px !important" }} />}
         onClick={() => {
           setOpen(prev => !prev);
         }}
-      />
-      <div ref={componentRef}>{open && <Calendar date={new Date()} className={styles.calendarElement} onChange={handleSelect} />}</div>
+        size="small"
+        sx={{ width: "180px !important" }}
+      >
+        {format(calendarData, "EEE, MMM d, yyyy")}
+      </Button>
+      <div ref={componentRef}>{open && <Calendar date={calendarData} className={styles.calendarElement} onChange={handleSelect} />}</div>
     </div>
   );
 };

@@ -187,18 +187,18 @@ export default function SplitTimeDialog({ splitDialogToggle, setSplitDialogToggl
             backgroundColor: "#E9EDEF",
             borderRadius: "30px",
             width: "42%",
-            // height: "20px !important",
             margin: "0 auto"
-            // boxShadow: " 0 2px 4px 0 rgba(0, 0, 0, 0.13)",
-            // "& .MuiButtonBase-root:focus": {
-            //   zIndex: 1,
-            //   color: " #fff !important",
-            //   fontWeight: "600 !important",
-            //   transition: "z-index 0.2s, color 0.5s, font-weight 0.2s !important"
-            // }
           }}
         >
-          <Tab label="Reassign time" disableRipple />
+          <Tab
+            label="Reassign time"
+            disableRipple
+            sx={{
+              "& .MuiTab-root": {
+                textTransform: "lowercase !important"
+              }
+            }}
+          />
           <Tab label="Delete time" disableRipple />
         </Tabs>
       </Box>

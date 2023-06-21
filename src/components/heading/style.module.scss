@@ -1,9 +1,0 @@
-@use "../../app/import.scss" as *;
-
-.heading {
-  h2 {
-    font-size: rem(30);
-    color: var(--clr-gunMeta-blue);
-    @extend %fw-300;
-  }
-}

@@ -55,7 +55,6 @@ const CalendarComp = () => {
       return ""; // or any other fallback value you prefer
     }
   });
-  console.log(open);
 
   return (
     <div className={styles.calenderWrap}>
